@@ -32,7 +32,7 @@ func add_tower_type(tower_name: String, cost: int, attack_range: float, scene: P
 		key = "mage"
 	elif "炮" in tower_name:
 		key = "cannon"
-	_tower_types.append({"name": tower_name, "cost": cost, "scene": scene, "key": key, "range": 150.0})
+	_tower_types.append({"name": tower_name, "cost": cost, "scene": scene, "key": key, "range": attack_range})
 	_add_tower_button(tower_name, cost, key)
 
 func _add_tower_button(tower_name: String, cost: int, key: String):

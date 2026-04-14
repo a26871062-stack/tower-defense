@@ -139,12 +139,12 @@ func _on_enemy_reached_end(enemy):
 	if lives <= 0:
 		game_over.emit()
 
-func _on_enemy_died(enemy, reward: int):
+func _on_enemy_died(_enemy, reward: int):
 	gold += reward
 	enemies_remaining -= 1
 	_update_ui()
 
-func _on_enemy_reached_tower(enemy):
+func _on_enemy_reached_tower(_enemy):
 	# 敌人被塔攻击
 	pass
 

@@ -32,7 +32,7 @@ func start_moving():
 
 func _move_along_path(delta):
 	if path_index >= path.size():
-		reached_end.emit()
+		reached_end.emit(self)
 		queue_free()
 		return
 	

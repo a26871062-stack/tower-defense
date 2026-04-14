@@ -27,7 +27,6 @@ func _add_tower_button(tower_name: String, cost: int):
 	tower_container.add_child(btn)
 
 func _on_tower_button_pressed(index: int):
-	print("DEBUG: button pressed, index=%d, is_placing=%s" % [index, is_placing])
 	var t = _tower_types[index]
 	if t.cost > get_parent().get_parent().gold:
 		return
@@ -42,7 +41,6 @@ func start_placement(tower_scene: PackedScene, cost: int):
 	placing_cost = cost
 
 func cancel_placement():
-	print("DEBUG: cancel_placement called")
-	is_placing = false
+		is_placing = false
 	placing_tower_scene = null
 	placing_cost = 0

@@ -1,28 +1,30 @@
 [gd_scene load_steps=4 format=3 uid="uid://mx123456"]
 
 [ext_resource type="Script" path="res://scripts/Tower.gd" id="1_tower"]
-[ext_resource type="Texture2D" uid="uid://tower_mage" path="res://assets/tower_mage.png" id="2_mage"]
+[ext_resource type="Texture2D" path="res://assets/PNG/Towers (red)/tower_00.png" id="2_red"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]
 radius = 20.0
 
 [node name="Tower" type="Area2D"]
 script = ExtResource("1_tower")
+tower_name = "法师塔"
+damage = 35.0
+range = 130.0
+fire_rate = 0.8
+cost = 80
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_mage")
+texture = ExtResource("2_red")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1")
 
-[node name="Range" type="CollisionShape2D" parent="."]
-visible = false
-
 [node name="RangeIndicator" type="ColorRect" parent="."]
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
+offset_left = -130.0
+offset_top = -130.0
+offset_right = 130.0
+offset_bottom = 130.0
 color = Color(1, 0, 0, 0.1)
 
 [node name="AttackTimer" type="Timer" parent="."]

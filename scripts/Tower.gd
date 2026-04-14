@@ -2,6 +2,7 @@ extends Area2D
 class_name Tower
 
 signal tower_selected(tower: Tower)
+signal target_reached(area: Area2D)
 signal tower_deselected
 
 @export var tower_name: String = "箭塔"

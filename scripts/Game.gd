@@ -86,7 +86,7 @@ func _on_tower_selected(tower_scene: PackedScene, cost: int):
 # 玩家点击地图放置塔
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			if build_panel.is_placing:
+		if build_panel.is_placing:
 			_place_tower_at(build_panel.placing_tower_scene, get_global_mouse_position(), build_panel.placing_cost)
 			build_panel.cancel_placement()
 

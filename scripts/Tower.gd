@@ -19,6 +19,7 @@ const SELL_RETURN_RATE: float = 0.5
 var level: int = 1
 var total_invested: int = 0
 var is_selected: bool = false
+var _show_range: bool = false
 
 var damage: float:
 	get: return base_damage * pow(UPGRADE_DAMAGE_MULTIPLIER, level - 1)
@@ -26,13 +27,11 @@ var damage: float:
 var _fire_cooldown: float = 0.0
 var _current_target: Enemy = null
 
-@onready var range_indicator = $RangeIndicator
 @onready var sprite = $Sprite2D
 @onready var attack_timer = $AttackTimer
 @onready var level_label = $LevelLabel
 
 func _ready():
-	range_indicator.hide()
 	level_label.hide()
 	attack_timer.wait_time = 1.0 / fire_rate
 	area_entered.connect(_on_area_entered)
@@ -83,17 +82,20 @@ func _on_area_exited(area):
 
 func _on_mouse_entered():
 	if not is_selected:
-		range_indicator.show()
+		_show_range = true
+		queue_redraw()
 
 func _on_mouse_exited():
 	if not is_selected:
-		range_indicator.hide()
+		_show_range = false
+		queue_redraw()
 
 func select():
 	if is_selected:
 		return
 	is_selected = true
-	range_indicator.show()
+	_show_range = true
+	queue_redraw()
 	level_label.show()
 	tower_selected.emit(self)
 
@@ -101,7 +103,8 @@ func deselect():
 	if not is_selected:
 		return
 	is_selected = false
-	range_indicator.hide()
+	_show_range = false
+	queue_redraw()
 	level_label.hide()
 	tower_deselected.emit()
 
@@ -111,6 +114,11 @@ func _input_event(_viewport, event, _shape_idx):
 			deselect()
 		else:
 			select()
+
+func _draw():
+	if _show_range:
+		draw_circle(Vector2.ZERO, attack_range, Color(1.0, 0.85, 0.3, 0.08))
+		draw_arc(Vector2.ZERO, attack_range, 0, TAU, 64, Color(1.0, 0.85, 0.3, 0.35), 1.5)
 
 func can_upgrade() -> bool:
 	return level < MAX_LEVEL

@@ -13,6 +13,7 @@ var health: float
 var path = []
 var path_index: int = 0
 var is_moving: bool = false
+var _health_fill_style: StyleBoxFlat
 
 @onready var health_bar = $HealthBar
 @onready var sprite = $Sprite2D
@@ -23,6 +24,7 @@ func _ready():
 	health_bar.max_value = max_health
 	health_bar.value = health
 	add_to_group("enemies")
+	_setup_health_bar_style()
 
 func _process(delta):
 	if is_moving and path.size() > 0:
@@ -48,6 +50,7 @@ func _move_along_path(delta):
 func take_damage(amount: float):
 	health -= amount
 	health_bar.value = health
+	_update_health_bar_color()
 
 	# 显示浮动伤害数字
 	_show_floating_damage(amount)
@@ -76,3 +79,20 @@ func _show_floating_damage(amount: float):
 func die():
 	died.emit(self, reward)
 	queue_free()
+
+func _setup_health_bar_style():
+	var fill = health_bar.get_theme_stylebox("fill")
+	if fill:
+		_health_fill_style = fill.duplicate()
+		health_bar.add_theme_stylebox_override("fill", _health_fill_style)
+
+func _update_health_bar_color():
+	if not _health_fill_style:
+		return
+	var pct = health / max_health
+	if pct > 0.6:
+		_health_fill_style.bg_color = Color(0.3, 0.75, 0.25)
+	elif pct > 0.3:
+		_health_fill_style.bg_color = Color(0.9, 0.7, 0.1)
+	else:
+		_health_fill_style.bg_color = Color(0.9, 0.15, 0.1)

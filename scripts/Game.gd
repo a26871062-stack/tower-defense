@@ -108,6 +108,7 @@ func _input(event):
 		if build_panel.is_placing:
 			_place_tower_at(build_panel.placing_tower_scene, get_global_mouse_position(), build_panel.placing_cost)
 			build_panel.cancel_placement()
+	build_panel.show()  # Restore build panel
 		elif selected_tower:
 			selected_tower.deselect()
 			selected_tower = null
@@ -115,6 +116,7 @@ func _input(event):
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		if build_panel.is_placing:
 			build_panel.cancel_placement()
+	build_panel.show()  # Restore build panel
 		elif selected_tower:
 			selected_tower.deselect()
 			selected_tower = null
@@ -123,7 +125,16 @@ func _input(event):
 func _place_tower_at(tower_scene: PackedScene, pos: Vector2, cost: int):
 	if gold < cost:
 		_show_message("金币不足！需要 %d 金币" % cost)
+		build_panel.cancel_placement()
+	build_panel.show()  # Restore build panel
 		return
+	# Check for overlapping existing towers
+	for existing_tower in towers:
+		if existing_tower.position.distance_to(pos) < 40:
+			_show_message("这里已经有塔了！")
+			build_panel.cancel_placement()
+	build_panel.show()  # Restore build panel
+			return
 	var tower = tower_scene.instantiate()
 	tower.position = pos
 	tower.target_reached.connect(_on_enemy_reached_tower)
@@ -273,6 +284,7 @@ func _on_insufficient_gold(msg: String):
 func _on_placement_started(tower_name: String, attack_range: float):
 	_is_placing_preview = true
 	_placement_range = attack_range
+	build_panel.hide()  # Hide build panel while placing
 	queue_redraw()
 
 func _on_placement_cancelled():

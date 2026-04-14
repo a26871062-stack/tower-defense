@@ -69,11 +69,13 @@ func _load_level(level_index: int):
 	is_wave_active = false
 	is_level_active = true
 	
-	# Apply level bonuses (for levels 2+)
-	if level_index > 0 and level_data.get("bonus_gold", 0) > 0:
-		gold += level_data["bonus_gold"]
-	if level_index > 0 and level_data.get("bonus_lives", 0) > 0:
-		lives += level_data["bonus_lives"]
+	# Init gold/lives from starting values
+	if level_index == 0:
+		gold = starting_gold
+		lives = starting_lives
+	else:
+		gold += level_data.get("bonus_gold", 0)
+		lives += level_data.get("bonus_lives", 0)
 	
 	# Draw path visually
 	if path_visual:

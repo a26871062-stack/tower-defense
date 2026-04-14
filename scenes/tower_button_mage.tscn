@@ -5,22 +5,8 @@
 
 [node name="TowerButton" type="Button"]
 script = ExtResource("1_script")
-custom_minimum_size = Vector2(120, 36)
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "法师塔  💰80"
-
-[node name="Icon" type="Sprite2D" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_anchors = 2
-texture = ExtResource("2_icon")
-expand_mode = 1
+text = "法师塔"
+icon = ExtResource("2_icon")

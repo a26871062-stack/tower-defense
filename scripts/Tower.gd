@@ -1,7 +1,6 @@
 extends Area2D
 class_name Tower
 
-signal target_reached(enemy: Enemy)
 signal tower_selected(tower: Tower)
 signal tower_deselected
 
@@ -90,12 +89,16 @@ func _on_mouse_exited():
 		range_indicator.hide()
 
 func select():
+	if is_selected:
+		return
 	is_selected = true
 	range_indicator.show()
 	level_label.show()
 	tower_selected.emit(self)
 
 func deselect():
+	if not is_selected:
+		return
 	is_selected = false
 	range_indicator.hide()
 	level_label.hide()

@@ -1,8 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1776164516
+::res://::1776174429
 icon.svg::CompressedTexture2D::3010631119827991163::1776138220::1776164519::1::::<><>::
 README.md::TextFile::-1::1776138389::0::1::::<><>::
-::res://assets/::1776160735
+test_button.gd::GDScript::-1::1776173279::0::1::::<>Node<>::
+::res://assets/::1776164519
 bullet.png::CompressedTexture2D::8049774963449422993::1776138366::1776164519::1::::<><>::
 enemy_bat.png::CompressedTexture2D::8291681116586009727::1776149634::1776164519::1::::<><>::
 enemy_goblin.png::CompressedTexture2D::6931173697785424282::1776138366::1776164519::1::::<><>::
@@ -14,7 +15,7 @@ Sample.png::CompressedTexture2D::7782966749710653387::1420735076::1776164519::1:
 tower_arrow.png::CompressedTexture2D::1298302829193342348::1776138366::1776164519::1::::<><>::
 tower_cannon.png::CompressedTexture2D::1169890737186205899::1776138366::1776164519::1::::<><>::
 tower_mage.png::CompressedTexture2D::7577201429589344961::1776138366::1776164519::1::::<><>::
-::res://assets/fantasy/::1776150378
+::res://assets/fantasy/::1776164520
 bullet_arrow.png::CompressedTexture2D::1516050380333942702::1776150914::1776164520::1::::<><>::
 enemy_bat.png::CompressedTexture2D::7639806005893066556::1776150332::1776164520::1::::<><>::
 enemy_skeleton.png::CompressedTexture2D::8642266668011986192::1776150332::1776164520::1::::<><>::
@@ -23,7 +24,7 @@ tower_arrow.png::CompressedTexture2D::5003437107043372147::1776150332::177616452
 tower_cannon.png::CompressedTexture2D::5671056847548517546::1776150332::1776164520::1::::<><>::
 tower_mage.png::CompressedTexture2D::4216308091667612399::1776150332::1776164520::1::::<><>::
 ::res://assets/PNG/::1420734086
-::res://assets/PNG/Details/::1420733004
+::res://assets/PNG/Details/::1776164520
 crystals_1.png::CompressedTexture2D::3277806531452572090::1420731418::1776164520::1::::<><>::
 crystals_2.png::CompressedTexture2D::8496694336845145284::1420731418::1776164520::1::::<><>::
 crystals_3.png::CompressedTexture2D::5112644837144774522::1420731418::1776164520::1::::<><>::
@@ -48,7 +49,7 @@ trees_9.png::CompressedTexture2D::7997972024995836640::1420731418::1776164520::1
 trees_10.png::CompressedTexture2D::3029802127504863663::1420731418::1776164520::1::::<><>::
 trees_11.png::CompressedTexture2D::4496551921861530458::1420731418::1776164520::1::::<><>::
 trees_12.png::CompressedTexture2D::4623692720313898192::1420731418::1776164520::1::::<><>::
-::res://assets/PNG/Landscape/::1420732958
+::res://assets/PNG/Landscape/::1776164520
 landscape_00.png::CompressedTexture2D::4237476138330185747::1420731418::1776164520::1::::<><>::
 landscape_01.png::CompressedTexture2D::6188973770409779098::1420731418::1776164520::1::::<><>::
 landscape_02.png::CompressedTexture2D::8060071636804165858::1420731418::1776164520::1::::<><>::
@@ -89,7 +90,7 @@ landscape_36.png::CompressedTexture2D::3743756388959959365::1420731418::17761645
 landscape_37.png::CompressedTexture2D::5756581308412761607::1420731418::1776164520::1::::<><>::
 landscape_38.png::CompressedTexture2D::3188991613941501300::1420731418::1776164520::1::::<><>::
 landscape_39.png::CompressedTexture2D::158282733596857384::1420731418::1776164520::1::::<><>::
-::res://assets/PNG/Towers (brown)/::1420734174
+::res://assets/PNG/Towers (brown)/::1776164520
 tower_00.png::CompressedTexture2D::273908645407252448::1420734114::1776164520::1::::<><>::
 tower_01.png::CompressedTexture2D::6440860658037399563::1420734114::1776164520::1::::<><>::
 tower_02.png::CompressedTexture2D::1472219768302073647::1420734114::1776164520::1::::<><>::
@@ -145,7 +146,7 @@ tower_51.png::CompressedTexture2D::128228939576772671::1420734114::1776164520::1
 tower_52.png::CompressedTexture2D::2741043782977561351::1420734114::1776164520::1::::<><>::
 tower_53.png::CompressedTexture2D::7898668278930560648::1420734114::1776164520::1::::<><>::
 tower_54.png::CompressedTexture2D::5750663521940076411::1420734114::1776164520::1::::<><>::
-::res://assets/PNG/Towers (grey)/::1420734200
+::res://assets/PNG/Towers (grey)/::1776164520
 tower_00.png::CompressedTexture2D::4272262813919810928::1420731418::1776164520::1::::<><>::
 tower_01.png::CompressedTexture2D::2121602089863721575::1420731418::1776164520::1::::<><>::
 tower_02.png::CompressedTexture2D::532466594336193670::1420731418::1776164520::1::::<><>::
@@ -201,7 +202,7 @@ tower_51.png::CompressedTexture2D::776412940815831318::1420731418::1776164520::1
 tower_52.png::CompressedTexture2D::7737052989888260366::1420731418::1776164520::1::::<><>::
 tower_53.png::CompressedTexture2D::8407063306758727003::1420731418::1776164520::1::::<><>::
 tower_54.png::CompressedTexture2D::7720937459925166478::1420731418::1776164520::1::::<><>::
-::res://assets/PNG/Towers (red)/::1420734222
+::res://assets/PNG/Towers (red)/::1776164520
 tower_00.png::CompressedTexture2D::8128494506792950575::1420734104::1776164520::1::::<><>::
 tower_01.png::CompressedTexture2D::4897544595143683482::1420734104::1776164520::1::::<><>::
 tower_02.png::CompressedTexture2D::5568088460239653475::1420734104::1776164520::1::::<><>::
@@ -257,7 +258,7 @@ tower_51.png::CompressedTexture2D::4312961331425538712::1420734104::1776164519::
 tower_52.png::CompressedTexture2D::9163195491602772685::1420734104::1776164519::1::::<><>::
 tower_53.png::CompressedTexture2D::667070902893125405::1420734104::1776164519::1::::<><>::
 tower_54.png::CompressedTexture2D::7658204539494153620::1420734104::1776164519::1::::<><>::
-::res://assets/Spritesheet/::1420734228
+::res://assets/Spritesheet/::1776164520
 landscape_sheet.png::CompressedTexture2D::9071689856782273148::1420732996::1776164520::1::::<><>::
 landscape_sheet.xml::TextFile::-1::1420732996::0::1::::<><>::
 towers_brown_sheet.png::CompressedTexture2D::6352004509175959502::1420734164::1776164519::1::::<><>::
@@ -266,18 +267,18 @@ towers_grey_sheet.png::CompressedTexture2D::4354245798079265856::1420734196::177
 towers_grey_sheet.xml::TextFile::-1::1420734196::0::1::::<><>::
 towers_red_sheet.png::CompressedTexture2D::3200275964524878839::1420734218::1776164519::1::::<><>::
 towers_red_sheet.xml::TextFile::-1::1420734218::0::1::::<><>::
-::res://assets/themes/::1776160735
-game_theme.tres::Theme::-1::1776160735::0::1::::<><>::
-::res://assets/tiny-dungeon/::1776149585
+::res://assets/themes/::1776164525
+game_theme.tres::Theme::8433196771760867685::1776164525::0::1::::<><>::
+::res://assets/tiny-dungeon/::1776164519
 License.txt::TextFile::-1::1657031994::0::1::::<><>::
 Preview.png::CompressedTexture2D::7215513989636200538::1657033268::1776164519::1::::<><>::
 Sample.png::CompressedTexture2D::5700005343016352082::1657033268::1776164519::1::::<><>::
 Tilesheet.txt::TextFile::-1::1657031880::0::1::::<><>::
 ::res://assets/tiny-dungeon/Tiled/::1657036412
-::res://assets/tiny-dungeon/Tilemap/::1657033078
+::res://assets/tiny-dungeon/Tilemap/::1776164518
 tilemap.png::CompressedTexture2D::7326879587765971365::1657033268::1776164518::1::::<><>::
 tilemap_packed.png::CompressedTexture2D::5825680900971636052::1657033268::1776164518::1::::<><>::
-::res://assets/tiny-dungeon/Tiles/::1657033064
+::res://assets/tiny-dungeon/Tiles/::1776164520
 tile_0000.png::CompressedTexture2D::4847643784966488695::1657033266::1776164518::1::::<><>::
 tile_0001.png::CompressedTexture2D::6342714491183346814::1657033266::1776164518::1::::<><>::
 tile_0002.png::CompressedTexture2D::4350165045279703740::1657033266::1776164518::1::::<><>::
@@ -411,14 +412,14 @@ tile_0129.png::CompressedTexture2D::9001324080857033084::1657033266::1776164519:
 tile_0130.png::CompressedTexture2D::5437859017795844337::1657033266::1776164519::1::::<><>::
 tile_0131.png::CompressedTexture2D::1268025868416461924::1657033266::1776164519::1::::<><>::
 ::res://resources/::1776138199
-::res://scenes/::1776160735
+::res://scenes/::1776174280
 build_panel.tscn::PackedScene::299365789471::1776160735::0::1::::<><>::res://scripts/BuildPanel.gd
 bullet.tscn::PackedScene::194319089183::1776150940::0::1::::<><>::res://scripts/Bullet.gd<>res://assets/bullet.png
 enemy.tscn::PackedScene::141795739039::1776160735::0::1::::<><>::res://scripts/Enemy.gd<>res://assets/fantasy/enemy_skeleton.png
 enemy_bat.tscn::PackedScene::-1::1776160735::0::1::::<><>::res://scripts/Enemy.gd<>res://assets/fantasy/enemy_bat.png
 enemy_skeleton.tscn::PackedScene::-1::1776160735::0::1::::<><>::res://scripts/Enemy.gd<>res://assets/fantasy/enemy_skeleton.png
 enemy_slime.tscn::PackedScene::-1::1776160735::0::1::::<><>::res://scripts/Enemy.gd<>res://assets/fantasy/enemy_slime.png
-main.tscn::PackedScene::246842439327::1776160735::0::1::::<><>::res://scripts/Game.gd<>res://scenes/build_panel.tscn<>res://scripts/TowerUpgradeUI.gd<>res://scripts/PathVisualizer.gd
+main.tscn::PackedScene::246842439327::1776174280::0::1::::<><>::res://scripts/Game.gd<>uid://fx123456::::res://scenes/build_panel.tscn<>res://scripts/TowerUpgradeUI.gd<>res://scripts/PathVisualizer.gd
 tower.tscn::PackedScene::89272388895::1776160735::0::1::::<><>::res://scripts/Tower.gd<>res://assets/tower_arrow.png
 tower_arrow.tscn::PackedScene::36749038751::1776160735::0::1::::<><>::res://scripts/Tower.gd<>res://assets/fantasy/tower_arrow.png
 tower_button.tscn::PackedScene::351889139615::1776149705::0::1::::<><>::res://scripts/TowerButton.gd<>res://assets/PNG/Towers (brown)/tower_00.png
@@ -427,14 +428,14 @@ tower_button_cannon.tscn::PackedScene::10821028666847::1776157505::0::1::::<><>:
 tower_button_mage.tscn::PackedScene::11346262168287::1776157499::0::1::::<><>::res://scripts/TowerButton.gd<>res://assets/fantasy/tower_mage.png
 tower_cannon.tscn::PackedScene::141795739039::1776160735::0::1::::<><>::res://scripts/Tower.gd<>res://assets/fantasy/tower_cannon.png
 tower_mage.tscn::PackedScene::667029240479::1776160735::0::1::::<><>::res://scripts/Tower.gd<>res://assets/fantasy/tower_mage.png
-::res://scripts/::1776160735
+::res://scripts/::1776169302
 BuildPanel.gd::GDScript::-1::1776158569::0::1::::<>Control<>::
 Bullet.gd::GDScript::-1::1776138290::0::1::::<>Area2D<>::
 Enemy.gd::GDScript::-1::1776160735::0::1::::Enemy<>Area2D<>::
 EnemyManager.gd::GDScript::-1::1776157038::0::1::::EnemyManager<>Node2D<>::
-Game.gd::GDScript::-1::1776159612::0::1::::<>Node2D<>::
+Game.gd::GDScript::-1::1776169307::0::1::::<>Node2D<>::
 LevelManager.gd::GDScript::-1::1776157788::0::1::::LevelManager<>Node<>::
 PathVisualizer.gd::GDScript::-1::1776157057::0::1::::<>Line2D<>::
 Tower.gd::GDScript::-1::1776160735::0::1::::Tower<>Area2D<>::
 TowerButton.gd::GDScript::-1::1776157477::0::1::::<>Button<>::
-TowerUpgradeUI.gd::GDScript::-1::1776162908::0::1::::<>Control<>::
+TowerUpgradeUI.gd::GDScript::-1::1776172964::0::1::::<>Control<>::

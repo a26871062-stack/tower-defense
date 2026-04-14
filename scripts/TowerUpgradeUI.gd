@@ -22,6 +22,7 @@ func _ready():
 func show_upgrade_ui(tower: Tower):
 	current_tower = tower
 	panel.show()
+	mouse_filter = Control.MOUSE_FILTER_PASS
 	# Hide build panel while upgrade UI is open
 	if get_parent():
 		var build_panel = get_parent().get_node_or_null("BuildPanel")
@@ -32,6 +33,7 @@ func show_upgrade_ui(tower: Tower):
 func hide_upgrade_ui():
 	panel.hide()
 	current_tower = null
+	mouse_filter = Control.MOUSE_FILTER_STOP
 	# Show build panel again
 	if get_parent():
 		var build_panel = get_parent().get_node_or_null("BuildPanel")

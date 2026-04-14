@@ -27,7 +27,7 @@
 - 创建 `audio/SoundManager.gd` 单例
 - 音效接口：箭塔/法师塔/炮塔攻击、敌人死亡、金币获得、升级/出售
 - 集成到 Tower.gd、Enemy.gd、Game.gd
-- ⚠️ 音效文件（.ogg）尚未添加，需要补充素材
+- ✅ 音效文件已生成（WAV 格式，9 个 SFX）
 
 ### 任务二：子弹差异化
 - `Bullet.gd` 新增 BulletType 枚举、splash_radius、slow_factor/slow_duration

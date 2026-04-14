@@ -74,6 +74,37 @@ offset_bottom = 195.0
 theme_override_font_sizes/font_size = 18
 text = "进入第 2 关"
 
+[node name="SpeedDownButton" type="Button" parent="UI"]
+offset_left = 230.0
+offset_top = 155.0
+offset_right = 270.0
+offset_bottom = 195.0
+text = "-"
+
+[node name="SpeedLabel" type="Label" parent="UI"]
+offset_left = 275.0
+offset_top = 155.0
+offset_right = 340.0
+offset_bottom = 195.0
+theme_override_font_sizes/font_size = 18
+text = "1.0x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedUpButton" type="Button" parent="UI"]
+offset_left = 345.0
+offset_top = 155.0
+offset_right = 385.0
+offset_bottom = 195.0
+text = "+"
+
+[node name="PauseButton" type="Button" parent="UI"]
+offset_left = 395.0
+offset_top = 155.0
+offset_right = 455.0
+offset_bottom = 195.0
+text = "暂停"
+
 [node name="BuildPanel" parent="UI" instance=ExtResource("2_build")]
 
 [node name="TowerUpgradeUI" type="Control" parent="UI"]

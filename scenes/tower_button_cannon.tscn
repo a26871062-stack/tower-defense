@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://gca123456"]
 
 [ext_resource type="Script" path="res://scripts/TowerButton.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/PNG/Towers (brown)/tower_10.png" id="2_icon"]
+[ext_resource type="Texture2D" path="res://assets/fantasy/tower_cannon.png" id="2_icon"]
 
 [node name="TowerButton" type="Button"]
 script = ExtResource("1_script")

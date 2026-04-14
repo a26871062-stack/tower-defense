@@ -15,6 +15,8 @@ var current_tower: Tower = null
 
 func _ready():
 	panel.hide()
+	upgrade_btn.pressed.connect(_on_upgrade_button_pressed)
+	sell_btn.pressed.connect(_on_sell_button_pressed)
 
 func show_upgrade_ui(tower: Tower):
 	current_tower = tower

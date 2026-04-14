@@ -13,6 +13,13 @@ var current_tower: Tower = null
 @onready var sell_btn = $Panel/VBox/SellButton
 @onready var sell_value_label = $Panel/VBox/SellButton/ValueLabel
 
+func _input(event):
+	# Intercept clicks inside upgrade UI so they don't bubble to Game._input
+	# which would deselect the tower and hide this panel before buttons respond
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if panel.visible and get_global_rect().has_point(event.global_position):
+			accept_event()
+
 func _ready():
 	print("[DEBUG] TowerUpgradeUI ready, btn=", upgrade_btn, " sell_btn=", sell_btn)
 	panel.hide()

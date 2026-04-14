@@ -26,3 +26,16 @@ offset_bottom = 150.0
 color = Color(1, 0, 0, 0.1)
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="LevelLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -45.0
+offset_right = 20.0
+offset_bottom = -25.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "★☆☆"
+horizontal_alignment = 1

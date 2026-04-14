@@ -1,0 +1,55 @@
+extends Control
+
+signal upgrade_tower(tower: Tower)
+signal sell_tower(tower: Tower)
+
+var current_tower: Tower = null
+
+@onready var panel = $Panel
+@onready var tower_name_label = $Panel/VBox/TowerNameLabel
+@onready var level_label = $Panel/VBox/LevelLabel
+@onready var upgrade_btn = $Panel/VBox/UpgradeButton
+@onready var upgrade_cost_label = $Panel/VBox/UpgradeButton/CostLabel
+@onready var sell_btn = $Panel/VBox/SellButton
+@onready var sell_value_label = $Panel/VBox/SellButton/ValueLabel
+
+func _ready():
+	panel.hide()
+
+func show_upgrade_ui(tower: Tower):
+	current_tower = tower
+	panel.show()
+	_update_ui()
+
+func hide_upgrade_ui():
+	panel.hide()
+	current_tower = null
+
+func _update_ui():
+	if not current_tower:
+		return
+
+	tower_name_label.text = current_tower.tower_name
+	level_label.text = "等级: %d / 3" % current_tower.level
+
+	var upgrade_cost = current_tower.get_upgrade_cost()
+	var sell_value = current_tower.get_sell_value()
+
+	if current_tower.level >= 3:
+		upgrade_btn.disabled = true
+		upgrade_cost_label.text = "满级"
+	else:
+		upgrade_btn.disabled = false
+		upgrade_cost_label.text = "%d 金币" % upgrade_cost
+
+	sell_value_label.text = "%d 金币" % sell_value
+
+func _on_upgrade_button_pressed():
+	if current_tower and current_tower.can_upgrade():
+		upgrade_tower.emit(current_tower)
+		_update_ui()
+
+func _on_sell_button_pressed():
+	if current_tower:
+		sell_tower.emit(current_tower)
+		hide_upgrade_ui()

@@ -9,10 +9,10 @@ radius = 20.0
 [node name="Tower" type="Area2D"]
 script = ExtResource("1_tower")
 tower_name = "法师塔"
-damage = 35.0
+base_damage = 35.0
 attack_range = 130.0
 fire_rate = 0.8
-cost = 80
+base_cost = 80
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_brown")
@@ -28,3 +28,16 @@ offset_bottom = 130.0
 color = Color(1, 0, 0, 0.1)
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="LevelLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -45.0
+offset_right = 20.0
+offset_bottom = -25.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "★☆☆"
+horizontal_alignment = 1

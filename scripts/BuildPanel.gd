@@ -14,7 +14,6 @@ var _tower_types: Array = []
 @onready var tower_container = $Panel/VBox
 
 func _ready():
-	panel.hide()
 
 func add_tower_type(name: String, cost: int, scene: PackedScene):
 	_tower_types.append({"name": name, "cost": cost, "scene": scene})

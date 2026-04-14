@@ -121,7 +121,6 @@ func _on_enemy_reached_end(enemy):
 	_update_ui()
 	if lives <= 0:
 		game_over.emit()
-		game_over()
 
 func _on_enemy_died(enemy, reward: int):
 	gold += reward

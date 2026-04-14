@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://gx123456"]
+
+[ext_resource type="Texture2D" uid="uid://tower_icon" path="res://assets/icon.svg" id="1_icon"]
+
+[node name="TowerButton" type="Button"]
+offset_right = 160.0
+offset_bottom = 60.0
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(25, 30)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_icon")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 10.0
+offset_right = 160.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 16
+text = "箭塔"
+
+[node name="CostLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 30.0
+offset_right = 160.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 14
+text = "💰 50"

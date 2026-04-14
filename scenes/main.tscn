@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://ex123456"]
+
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_game"]
+[ext_resource type="PackedScene" uid="uid://build_panel" path="res://scenes/build_panel.tscn" id="2_build"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_game")
+starting_gold = 100
+starting_lives = 20
+
+[node name="Path" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GoldLabel" type="Label" parent="UI"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 24
+text = "💰 金币: 100"
+
+[node name="LivesLabel" type="Label" parent="UI"]
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 200.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 24
+text = "❤️ 生命: 20"
+
+[node name="WaveLabel" type="Label" parent="UI"]
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 24
+text = "准备开始"
+
+[node name="StartWaveButton" type="Button" parent="UI"]
+offset_left = 20.0
+offset_top = 120.0
+offset_right = 150.0
+offset_bottom = 160.0
+text = "开始波次"
+
+[node name="BuildPanel" parent="UI" instance=ExtResource("2_build")]

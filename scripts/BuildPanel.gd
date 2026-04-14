@@ -1,0 +1,47 @@
+extends Control
+
+signal tower_selected(tower_scene: PackedScene, cost: int)
+
+const TOWER_BUTTON_SCENE = preload("res://scenes/tower_button.tscn")
+
+var is_placing: bool = false
+var placing_tower_scene: PackedScene = null
+var placing_cost: int = 0
+
+var _tower_types: Array = []
+
+@onready var panel = $Panel
+@onready var tower_container = $Panel/VBox
+
+func _ready():
+	panel.hide()
+
+func add_tower_type(name: String, cost: int, scene: PackedScene):
+	_tower_types.append({"name": name, "cost": cost, "scene": scene})
+	_add_tower_button(name, cost)
+
+func _add_tower_button(name: String, cost: int):
+	var btn = TOWER_BUTTON_SCENE.instantiate()
+	btn.setup(name, cost)
+	btn.pressed.connect(_on_tower_button_pressed.bind(len(_tower_types) - 1))
+	tower_container.add_child(btn)
+
+func _on_tower_button_pressed(index: int):
+	var t = _tower_types[index]
+	if t.cost > get_parent().get_parent().gold:
+		return  # 钱不够
+	
+	is_placing = true
+	placing_tower_scene = t.scene
+	placing_cost = t.cost
+	tower_selected.emit(t.scene, t.cost)
+
+func start_placement(tower_scene: PackedScene, cost: int):
+	is_placing = true
+	placing_tower_scene = tower_scene
+	placing_cost = cost
+
+func cancel_placement():
+	is_placing = false
+	placing_tower_scene = null
+	placing_cost = 0

@@ -1,15 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://gx123456"]
+[gd_scene load_steps=3 format=3 uid="uid://gx123456"]
 
-[ext_resource type="Texture2D" uid="uid://tower_icon" path="res://assets/icon.svg" id="1_icon"]
+[ext_resource type="Script" path="res://scripts/TowerButton.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://tower_icon" path="res://assets/tower_arrow.png" id="2_icon"]
 
 [node name="TowerButton" type="Button"]
+script = ExtResource("1_script")
 offset_right = 160.0
 offset_bottom = 60.0
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(25, 30)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_icon")
+texture = ExtResource("2_icon")
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 1

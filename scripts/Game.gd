@@ -115,16 +115,34 @@ func _input(event):
 			build_panel.cancel_placement()
 			build_panel.show()
 		elif selected_tower:
-			selected_tower.deselect()
-			selected_tower = null
-			upgrade_ui.hide_upgrade_ui()
+			# Check if click is inside any UI node (upgrade UI or build panel)
+			var click_pos = event.global_position
+			var ui = $UI
+			var clicked_on_ui = false
+			for child in ui.get_children():
+				if child is Control and child.visible and child.get_global_rect().has_point(click_pos):
+					clicked_on_ui = true
+					break
+			if not clicked_on_ui:
+				selected_tower.deselect()
+				selected_tower = null
+				upgrade_ui.hide_upgrade_ui()
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		if build_panel.is_placing:
 			build_panel.cancel_placement()
 		elif selected_tower:
-			selected_tower.deselect()
-			selected_tower = null
-			upgrade_ui.hide_upgrade_ui()
+			# Check if click is inside any UI node (upgrade UI or build panel)
+			var click_pos = event.global_position
+			var ui = $UI
+			var clicked_on_ui = false
+			for child in ui.get_children():
+				if child is Control and child.visible and child.get_global_rect().has_point(click_pos):
+					clicked_on_ui = true
+					break
+			if not clicked_on_ui:
+				selected_tower.deselect()
+				selected_tower = null
+				upgrade_ui.hide_upgrade_ui()
 
 func _place_tower_at(tower_scene: PackedScene, pos: Vector2, cost: int):
 	if gold < cost:

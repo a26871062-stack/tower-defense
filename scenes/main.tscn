@@ -77,6 +77,7 @@ text = "进入第 2 关"
 [node name="BuildPanel" parent="UI" instance=ExtResource("2_build")]
 
 [node name="TowerUpgradeUI" type="Control" parent="UI"]
+mouse_filter = 1
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

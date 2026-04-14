@@ -35,7 +35,7 @@ static func get_enemy_type_for_wave(wave: int, random_val: float) -> EnemyType:
 static func get_wave_enemy_count(wave: int) -> int:
 	return int(5 + wave * 3 + pow(wave, 1.2))
 
-static func create_enemy(type: EnemyType, path: Array[Vector2]) -> Enemy:
+static func create_enemy(type: EnemyType, path) -> Enemy:
 	var scene = ENEMY_SCENES[type]
 	var enemy = scene.instantiate()
 	var config = ENEMY_CONFIGS[type]

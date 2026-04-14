@@ -7,7 +7,7 @@ func _ready():
 	begin_cap_mode = Line2D.LINE_CAP_ROUND
 	end_cap_mode = Line2D.LINE_CAP_ROUND
 
-func setup_path(path_points: Array[Vector2]):
+func setup_path(path_points):
 	clear_points()
 	for point in path_points:
 		add_point(point)

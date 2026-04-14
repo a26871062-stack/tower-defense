@@ -23,7 +23,7 @@ var total_enemies_in_wave: int = 0
 var current_level_index: int = 0
 var is_level_active: bool = false
 
-var path_points: Array[Vector2] = []
+var path_points = []
 
 var towers: Array = []
 var enemies: Array = []

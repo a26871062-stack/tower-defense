@@ -10,7 +10,7 @@ signal died(enemy: Enemy, reward: int)
 @export var reward: int = 10
 
 var health: float
-var path: Array[Vector2] = []
+var path = []
 var path_index: int = 0
 var is_moving: bool = false
 

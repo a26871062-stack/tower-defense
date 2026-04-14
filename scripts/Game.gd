@@ -77,6 +77,11 @@ func _load_level(level_index: int):
 		gold += level_data.get("bonus_gold", 0)
 		lives += level_data.get("bonus_lives", 0)
 	
+	# Clear existing towers
+	for tower in towers:
+		tower.queue_free()
+	towers.clear()
+
 	# Draw path visually
 	if path_visual:
 		path_visual.setup_path(path_points)

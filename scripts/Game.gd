@@ -24,6 +24,10 @@ var towers: Array = []
 var enemies: Array = []
 var selected_tower: Tower = null
 
+var _is_placing_preview: bool = false
+var _placement_range: float = 150.0
+var _placement_pos: Vector2 = Vector2.ZERO
+
 @onready var gold_label = $UI/GoldLabel
 @onready var lives_label = $UI/LivesLabel
 @onready var wave_label = $UI/WaveLabel
@@ -58,10 +62,15 @@ func _ready():
 	upgrade_ui.upgrade_tower.connect(_on_upgrade_tower)
 	upgrade_ui.sell_tower.connect(_on_sell_tower)
 	build_panel.insufficient_gold.connect(_on_insufficient_gold)
+	build_panel.placement_started.connect(_on_placement_started)
+	build_panel.placement_cancelled.connect(_on_placement_cancelled)
 
 func _process(_delta):
 	if is_wave_active and enemies_remaining <= 0 and get_tree().get_nodes_in_group("enemies").size() == 0:
 		_wave_cleared()
+	if _is_placing_preview:
+		_placement_pos = get_global_mouse_position()
+		queue_redraw()
 
 func _update_ui():
 	gold_label.text = "💰 金币: %d" % gold
@@ -69,9 +78,9 @@ func _update_ui():
 	wave_label.text = "第 %d 波" % current_wave if current_wave > 0 else "准备开始"
 
 func _setup_build_panel():
-	build_panel.add_tower_type("箭塔", 50, preload("res://scenes/tower_arrow.tscn"))
-	build_panel.add_tower_type("法师塔", 80, preload("res://scenes/tower_mage.tscn"))
-	build_panel.add_tower_type("炮塔", 120, preload("res://scenes/tower_cannon.tscn"))
+	build_panel.add_tower_type("箭塔", 50, 150.0, preload("res://scenes/tower_arrow.tscn"))
+	build_panel.add_tower_type("法师塔", 80, 130.0, preload("res://scenes/tower_mage.tscn"))
+	build_panel.add_tower_type("炮塔", 120, 120.0, preload("res://scenes/tower_cannon.tscn"))
 
 func _on_tower_selected(tower_scene: PackedScene, cost: int):
 	if gold < cost:
@@ -187,6 +196,13 @@ func _wave_cleared():
 	gold += bonus
 	_update_ui()
 
+func _draw():
+	if _is_placing_preview:
+		var preview_color = Color(0.2, 0.6, 1.0, 0.15)
+		var border_color = Color(0.2, 0.6, 1.0, 0.6)
+		draw_circle(_placement_pos, _placement_range, preview_color)
+		draw_arc(_placement_pos, _placement_range, 0, TAU, 64, border_color, 2.0)
+
 func _show_message(msg: String):
 	message_label.text = msg
 	message_label.show()
@@ -198,3 +214,12 @@ func _show_message(msg: String):
 
 func _on_insufficient_gold(msg: String):
 	_show_message(msg)
+
+func _on_placement_started(tower_name: String, attack_range: float):
+	_is_placing_preview = true
+	_placement_range = attack_range
+	queue_redraw()
+
+func _on_placement_cancelled():
+	_is_placing_preview = false
+	queue_redraw()

@@ -2,6 +2,9 @@ extends Control
 
 signal tower_selected(tower_scene: PackedScene, cost: int)
 signal insufficient_gold(msg: String)
+signal placement_started(tower_name: String, attack_range: float)
+signal placement_moved(pos: Vector2)
+signal placement_cancelled
 
 const TOWER_BUTTON_SCENES = {
 	"arrow": preload("res://scenes/tower_button_arrow.tscn"),
@@ -12,6 +15,8 @@ const TOWER_BUTTON_SCENES = {
 var is_placing: bool = false
 var placing_tower_scene: PackedScene = null
 var placing_cost: int = 0
+var placing_tower_name: String = ""
+var placing_attack_range: float = 150.0
 
 var _tower_types: Array = []
 
@@ -21,13 +26,13 @@ var _tower_types: Array = []
 func _ready():
 	pass
 
-func add_tower_type(tower_name: String, cost: int, scene: PackedScene):
+func add_tower_type(tower_name: String, cost: int, attack_range: float, scene: PackedScene):
 	var key = "arrow"
 	if "法师" in tower_name:
 		key = "mage"
 	elif "炮" in tower_name:
 		key = "cannon"
-	_tower_types.append({"name": tower_name, "cost": cost, "scene": scene, "key": key})
+	_tower_types.append({"name": tower_name, "cost": cost, "scene": scene, "key": key, "range": 150.0})
 	_add_tower_button(tower_name, cost, key)
 
 func _add_tower_button(tower_name: String, cost: int, key: String):
@@ -44,7 +49,10 @@ func _on_tower_button_pressed(index: int):
 	is_placing = true
 	placing_tower_scene = t.scene
 	placing_cost = t.cost
+	placing_tower_name = t.name
+	placing_attack_range = t.get("range", 150.0)
 	tower_selected.emit(t.scene, t.cost)
+	placement_started.emit(t.name, placing_attack_range)
 
 func start_placement(tower_scene: PackedScene, cost: int):
 	is_placing = true
@@ -55,3 +63,6 @@ func cancel_placement():
 	is_placing = false
 	placing_tower_scene = null
 	placing_cost = 0
+	placing_tower_name = ""
+	placing_attack_range = 150.0
+	placement_cancelled.emit()

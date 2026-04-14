@@ -14,7 +14,6 @@ var current_tower: Tower = null
 @onready var sell_value_label = $Panel/VBox/SellButton/ValueLabel
 
 func _ready():
-	print("[DEBUG] TowerUpgradeUI ready, btn=", upgrade_btn, " sell_btn=", sell_btn)
 	panel.hide()
 	upgrade_btn.pressed.connect(_on_upgrade_button_pressed)
 	sell_btn.pressed.connect(_on_sell_button_pressed)
@@ -58,13 +57,11 @@ func _update_ui():
 	sell_value_label.text = "%d 金币" % sell_value
 
 func _on_upgrade_button_pressed():
-	print("[DEBUG] Upgrade button pressed! current_tower=", current_tower)
 	if current_tower and current_tower.can_upgrade():
 		upgrade_tower.emit(current_tower)
 		_update_ui()
 
 func _on_sell_button_pressed():
-	print("[DEBUG] Sell button pressed! current_tower=", current_tower)
 	if current_tower:
 		sell_tower.emit(current_tower)
 		hide_upgrade_ui()

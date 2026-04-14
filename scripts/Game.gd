@@ -31,14 +31,31 @@ var enemies: Array = []
 @onready var lives_label = $UI/LivesLabel
 @onready var wave_label = $UI/WaveLabel
 @onready var build_panel = $UI/BuildPanel
+@onready var start_wave_btn = $UI/StartWaveButton
 @onready var path_node = $Path
 
 func _ready():
 	gold = starting_gold
 	lives = starting_lives
 	current_wave = 0
+	
+	# 默认路径（从左到右穿过屏幕）
+	if path_points.size() == 0:
+		path_points = [
+			Vector2(-50, 360),
+			Vector2(200, 360),
+			Vector2(200, 200),
+			Vector2(500, 200),
+			Vector2(500, 400),
+			Vector2(800, 400),
+			Vector2(800, 300),
+			Vector2(1100, 300),
+			Vector2(1350, 300),
+		]
+	
 	_update_ui()
 	_setup_build_panel()
+	start_wave_btn.pressed.connect(start_next_wave)
 	
 	# 连接信号
 	build_panel.tower_selected.connect(_on_tower_selected)

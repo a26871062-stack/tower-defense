@@ -13,6 +13,11 @@ var current_tower: Tower = null
 @onready var sell_btn = $Panel/VBox/SellButton
 @onready var sell_value_label = $Panel/VBox/SellButton/ValueLabel
 
+func _input(event):
+	if event is InputEventMouseButton:
+		print("[DEBUG] TowerUpgradeUI _input: ", event.as_text(), " pos=", event.position)
+	print("[DEBUG] TowerUpgradeUI _input called")
+
 func _ready():
 	print("[DEBUG] TowerUpgradeUI ready, btn=", upgrade_btn, " sell_btn=", sell_btn)
 	panel.hide()

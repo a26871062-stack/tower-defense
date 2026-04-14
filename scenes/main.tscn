@@ -77,7 +77,6 @@ text = "进入第 2 关"
 [node name="BuildPanel" parent="UI" instance=ExtResource("2_build")]
 
 [node name="TowerUpgradeUI" type="Control" parent="UI"]
-mouse_filter = 1
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -90,19 +89,19 @@ offset_right = 120.0
 offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("3_upgrade")
 
 [node name="Panel" type="Panel" parent="UI/TowerUpgradeUI"]
-mouse_filter = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBox" type="VBoxContainer" parent="UI/TowerUpgradeUI/Panel"]
-mouse_filter = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -111,6 +110,7 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 2
+mouse_filter = 2
 
 [node name="TowerNameLabel" type="Label" parent="UI/TowerUpgradeUI/Panel/VBox"]
 layout_mode = 2

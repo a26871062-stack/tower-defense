@@ -122,6 +122,9 @@ func _input(event):
 			upgrade_ui.hide_upgrade_ui()
 
 func _place_tower_at(tower_scene: PackedScene, pos: Vector2, cost: int):
+	if gold < cost:
+		_show_message("金币不足！需要 %d 金币" % cost)
+		return
 	var tower = tower_scene.instantiate()
 	tower.position = pos
 	tower.target_reached.connect(_on_enemy_reached_tower)

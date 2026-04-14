@@ -16,21 +16,20 @@ var _tower_types: Array = []
 func _ready():
 	pass
 
-func add_tower_type(name: String, cost: int, scene: PackedScene):
-	_tower_types.append({"name": name, "cost": cost, "scene": scene})
-	_add_tower_button(name, cost)
+func add_tower_type(tower_name: String, cost: int, scene: PackedScene):
+	_tower_types.append({"name": tower_name, "cost": cost, "scene": scene})
+	_add_tower_button(tower_name, cost)
 
-func _add_tower_button(name: String, cost: int):
+func _add_tower_button(tower_name: String, cost: int):
 	var btn = TOWER_BUTTON_SCENE.instantiate()
-	btn.setup(name, cost)
+	btn.setup(tower_name, cost)
 	btn.pressed.connect(_on_tower_button_pressed.bind(len(_tower_types) - 1))
 	tower_container.add_child(btn)
 
 func _on_tower_button_pressed(index: int):
 	var t = _tower_types[index]
 	if t.cost > get_parent().get_parent().gold:
-		return  # 钱不够
-	
+		return
 	is_placing = true
 	placing_tower_scene = t.scene
 	placing_cost = t.cost

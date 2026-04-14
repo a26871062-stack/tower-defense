@@ -19,11 +19,21 @@ func _ready():
 func show_upgrade_ui(tower: Tower):
 	current_tower = tower
 	panel.show()
+	# Hide build panel while upgrade UI is open
+	if get_parent():
+		var build_panel = get_parent().get_node_or_null("BuildPanel")
+		if build_panel:
+			build_panel.hide()
 	_update_ui()
 
 func hide_upgrade_ui():
 	panel.hide()
 	current_tower = null
+	# Show build panel again
+	if get_parent():
+		var build_panel = get_parent().get_node_or_null("BuildPanel")
+		if build_panel:
+			build_panel.show()
 
 func _update_ui():
 	if not current_tower:

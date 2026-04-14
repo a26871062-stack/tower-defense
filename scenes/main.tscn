@@ -48,14 +48,17 @@ text = "开始波次"
 
 [node name="TowerUpgradeUI" type="Control" parent="UI"]
 layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -180.0
-offset_top = 250.0
-offset_right = -20.0
-offset_bottom = 450.0
-grow_horizontal = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -120.0
+offset_right = 100.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_upgrade")
 
 [node name="Panel" type="Panel" parent="UI/TowerUpgradeUI"]

@@ -5,7 +5,7 @@ signal target_reached(enemy: Enemy)
 
 @export var tower_name: String = "箭塔"
 @export var damage: float = 20.0
-@export var range: float = 150.0  # 攻击范围
+@export var attack_range: float = 150.0  # 攻击范围
 @export var fire_rate: float = 1.0  # 每秒攻击次数
 @export var cost: int = 50
 
@@ -14,7 +14,6 @@ var _current_target: Enemy = null
 
 @onready var range_indicator = $RangeIndicator
 @onready var sprite = $Sprite2D
-@onready var tower_range = $Range
 @onready var attack_timer = $AttackTimer
 
 func _ready():
@@ -50,7 +49,7 @@ func _find_closest_enemy() -> Enemy:
 	
 	for enemy in enemies:
 		var dist = global_position.distance_to(enemy.global_position)
-		if dist <= range and dist < closest_dist:
+		if dist <= attack_range and dist < closest_dist:
 			closest = enemy
 			closest_dist = dist
 	

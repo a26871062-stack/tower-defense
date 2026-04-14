@@ -10,7 +10,7 @@ radius = 20.0
 script = ExtResource("1_tower")
 tower_name = "箭塔"
 damage = 20.0
-range = 150.0
+attack_range = 150.0
 fire_rate = 1.0
 cost = 50
 

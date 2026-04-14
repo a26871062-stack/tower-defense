@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cx123456"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_enemy"]
-[ext_resource type="Texture2D" path="res://assets/enemy_goblin.png" id="2_enemy"]
+[ext_resource type="Texture2D" path="res://assets/enemy_slime.png" id="2_enemy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]
 radius = 15.0
@@ -12,6 +12,7 @@ max_health = 100.0
 reward = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.0, 2.0)
 texture = ExtResource("2_enemy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

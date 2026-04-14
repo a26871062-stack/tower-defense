@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://gx123456"]
+[gd_scene load_steps=3 format=3 uid="uid://gma123456"]
 
 [ext_resource type="Script" path="res://scripts/TowerButton.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://tower_icon" path="res://assets/PNG/Towers (brown)/tower_00.png" id="2_icon"]
+[ext_resource type="Texture2D" path="res://assets/PNG/Towers (brown)/tower_20.png" id="2_icon"]
 
 [node name="TowerButton" type="Button"]
 script = ExtResource("1_script")
 custom_minimum_size = Vector2(120, 36)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "箭塔  💰50"
+text = "法师塔  💰80"
 
 [node name="Icon" type="Sprite2D" parent="."]
 layout_mode = 1

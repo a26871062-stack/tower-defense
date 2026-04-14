@@ -2,7 +2,11 @@ extends Control
 
 signal tower_selected(tower_scene: PackedScene, cost: int)
 
-const TOWER_BUTTON_SCENE = preload("res://scenes/tower_button.tscn")
+const TOWER_BUTTON_SCENES = {
+	"arrow": preload("res://scenes/tower_button_arrow.tscn"),
+	"mage": preload("res://scenes/tower_button_mage.tscn"),
+	"cannon": preload("res://scenes/tower_button_cannon.tscn"),
+}
 
 var is_placing: bool = false
 var placing_tower_scene: PackedScene = null
@@ -17,11 +21,16 @@ func _ready():
 	pass
 
 func add_tower_type(tower_name: String, cost: int, scene: PackedScene):
-	_tower_types.append({"name": tower_name, "cost": cost, "scene": scene})
-	_add_tower_button(tower_name, cost)
+	var key = "arrow"
+	if "法师" in tower_name:
+		key = "mage"
+	elif "炮" in tower_name:
+		key = "cannon"
+	_tower_types.append({"name": tower_name, "cost": cost, "scene": scene, "key": key})
+	_add_tower_button(tower_name, cost, key)
 
-func _add_tower_button(tower_name: String, cost: int):
-	var btn = TOWER_BUTTON_SCENE.instantiate()
+func _add_tower_button(tower_name: String, cost: int, key: String):
+	var btn = TOWER_BUTTON_SCENES[key].instantiate()
 	btn.setup(tower_name, cost)
 	btn.pressed.connect(_on_tower_button_pressed.bind(len(_tower_types) - 1))
 	tower_container.add_child(btn)

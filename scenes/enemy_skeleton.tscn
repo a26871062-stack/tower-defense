@@ -41,5 +41,5 @@ offset_right = 20.0
 offset_bottom = -20.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 16
-text = "-20"
+visible = false
 horizontal_alignment = 1

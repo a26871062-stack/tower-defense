@@ -186,6 +186,7 @@ func _spawn_enemy():
 	var enemy = EnemyManager.create_enemy(enemy_type, path_points)
 	enemy.reached_end.connect(_on_enemy_reached_end)
 	enemy.died.connect(_on_enemy_died)
+	enemy.position = path_points[0]  # Start at path beginning
 	add_child(enemy)
 	enemies.append(enemy)
 	enemy.start_moving()

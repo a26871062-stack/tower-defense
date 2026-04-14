@@ -35,8 +35,8 @@ TopBar： #38301E (深棕)
 金币：   #D4B42C (金色)
 生命：   #CC3333 (血红)
 敌人：   #556B2F (暗绿 史莱姆)
-        #C0C0C0 (骨白 骷髅)
-        #6A4C93 (暗紫 蝙蝠)
+		#C0C0C0 (骨白 骷髅)
+		#6A4C93 (暗紫 蝙蝠)
 ```
 
 ---
@@ -60,12 +60,12 @@ Main (Node2D)
 ├── Bullets (Node2D)          — 子弹容器
 ├── FloatingTexts (Node2D)    — 浮动伤害数字
 └── UI (CanvasLayer)
-    ├── TopBar (Panel)        — 顶栏：波次/金币/生命/等级
-    ├── BuildPanel (Panel)     — 建造面板（右侧固定）
-    ├── TowerUpgradeUI (Control) — 升级面板（屏幕居中）
-    ├── StartWaveButton        — 开始波次按钮
-    ├── NextLevelButton       — 进入下一关按钮
-    └── MessageLabel (Label)  — 中央提示文字
+	├── TopBar (Panel)        — 顶栏：波次/金币/生命/等级
+	├── BuildPanel (Panel)     — 建造面板（右侧固定）
+	├── TowerUpgradeUI (Control) — 升级面板（屏幕居中）
+	├── StartWaveButton        — 开始波次按钮
+	├── NextLevelButton       — 进入下一关按钮
+	└── MessageLabel (Label)  — 中央提示文字
 ```
 
 ---
@@ -94,12 +94,12 @@ Main (Node2D)
   ```
   Panel
   └── VBox
-      ├── TowerNameLabel (塔名，金色 20px)
-      ├── UpgradeTowerLevelLabel (等级 14px)
-      ├── UpgradeButton (升级，金色文字)
-      │   └── CostLabel (花费)
-      └── SellButton (出售，红字)
-          └── ValueLabel (返还额)
+	  ├── TowerNameLabel (塔名，金色 20px)
+	  ├── UpgradeTowerLevelLabel (等级 14px)
+	  ├── UpgradeButton (升级，金色文字)
+	  │   └── CostLabel (花费)
+	  └── SellButton (出售，红字)
+		  └── ValueLabel (返还额)
   ```
 - **mouse_filter**：`Control = PASS`，`Panel/VBox = IGNORE`
 

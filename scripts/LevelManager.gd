@@ -1,4 +1,3 @@
-extends Node
 class_name LevelManager
 
 # 5个关卡配置

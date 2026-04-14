@@ -1,6 +1,8 @@
 extends Area2D
 class_name Tower
 
+const Bullet = preload("res://scripts/Bullet.gd")
+
 signal tower_selected(tower: Tower)
 signal target_reached(area: Area2D)
 signal tower_deselected
@@ -26,6 +28,12 @@ var damage: float:
 
 var _fire_cooldown: float = 0.0
 var _current_target: Enemy = null
+
+var _attack_sounds: Dictionary = {
+	"箭塔": "arrow_attack",
+	"法师塔": "mage_attack",
+	"炮塔": "cannon_attack",
+}
 
 @onready var sprite = $Sprite2D
 @onready var attack_timer = $AttackTimer
@@ -63,6 +71,7 @@ func attack(target: Enemy):
 	tween.tween_property(sprite, "scale", Vector2(1.2, 1.2), 0.1)
 	tween.tween_property(sprite, "scale", Vector2(1.0, 1.0), 0.1)
 	_create_projectile(target)
+	_play_attack_sound()
 
 func _create_projectile(target: Enemy):
 	var bullet = preload("res://scenes/bullet.tscn").instantiate()
@@ -70,6 +79,22 @@ func _create_projectile(target: Enemy):
 	bullet.target = target
 	bullet.damage = damage
 	bullet.add_to_group("projectiles")
+
+	# 根据塔类型设置子弹属性
+	match tower_name:
+		"箭塔":
+			bullet.bullet_type = Bullet.BulletType.ARROW
+			bullet.speed = 500.0
+		"法师塔":
+			bullet.bullet_type = Bullet.BulletType.MAGIC
+			bullet.speed = 300.0
+			bullet.slow_factor = 0.5
+			bullet.slow_duration = 1.0
+		"炮塔":
+			bullet.bullet_type = Bullet.BulletType.CANNON
+			bullet.speed = 250.0
+			bullet.splash_radius = 50.0
+
 	get_parent().add_child(bullet)
 
 func _on_area_entered(area):
@@ -79,6 +104,10 @@ func _on_area_entered(area):
 func _on_area_exited(area):
 	if area is Enemy and area == _current_target:
 		_current_target = null
+
+func _play_attack_sound():
+	var sound_name = _attack_sounds.get(tower_name, "arrow_attack")
+	SoundManager.play_sfx(sound_name)
 
 func _on_mouse_entered():
 	if not is_selected:

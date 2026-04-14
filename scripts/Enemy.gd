@@ -8,12 +8,15 @@ signal died(enemy: Enemy, reward: int)
 
 @export var max_health: float = 100.0
 @export var reward: int = 10
+@export var death_effect_scene: PackedScene = preload("res://scenes/death_effect.tscn")
 
 var health: float
 var path = []
 var path_index: int = 0
 var is_moving: bool = false
 var _health_fill_style: StyleBoxFlat
+var _slow_timer: float = 0.0
+var _slow_factor: float = 1.0
 
 @onready var health_bar = $HealthBar
 @onready var sprite = $Sprite2D
@@ -29,6 +32,10 @@ func _ready():
 func _process(delta):
 	if is_moving and path.size() > 0:
 		_move_along_path(delta)
+	if _slow_timer > 0:
+		_slow_timer -= delta
+		if _slow_timer <= 0:
+			_slow_factor = 1.0
 
 func start_moving():
 	is_moving = true
@@ -38,14 +45,19 @@ func _move_along_path(delta):
 		reached_end.emit(self)
 		queue_free()
 		return
-	
+
 	var target = path[path_index]
 	var direction = (target - global_position).normalized()
-	global_position += direction * SPEED * delta
-	
+	global_position += direction * SPEED * _slow_factor * delta
+
 	# 检查是否到达当前路径点
 	if global_position.distance_to(target) < 5:
 		path_index += 1
+
+func apply_slow(factor: float, duration: float):
+	# factor 是速度倍率，0.5 表示速度降为50%
+	_slow_factor = factor
+	_slow_timer = max(_slow_timer, duration)
 
 func take_damage(amount: float):
 	health -= amount
@@ -77,8 +89,16 @@ func _show_floating_damage(amount: float):
 		damage_label.position.y += 30
 
 func die():
+	SoundManager.play_sfx("enemy_death")
+	_show_death_effect()
 	died.emit(self, reward)
 	queue_free()
+
+func _show_death_effect():
+	if death_effect_scene:
+		var effect = death_effect_scene.instantiate()
+		effect.global_position = global_position
+		get_parent().add_child(effect)
 
 func _setup_health_bar_style():
 	var fill = health_bar.get_theme_stylebox("fill")

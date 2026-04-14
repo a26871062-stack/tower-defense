@@ -1,20 +1,25 @@
-extends Node2D
-
 class_name EnemyManager
 
 enum EnemyType { SKELETON, SLIME, BAT }
 
-const ENEMY_SCENES = {
-	EnemyType.SKELETON: preload("res://scenes/enemy_skeleton.tscn"),
-	EnemyType.SLIME: preload("res://scenes/enemy_slime.tscn"),
-	EnemyType.BAT: preload("res://scenes/enemy_bat.tscn"),
-}
+static var _enemy_scenes_loaded: bool = false
+static var _enemy_scenes: Dictionary = {}
 
-const ENEMY_CONFIGS = {
+static var ENEMY_CONFIGS: Dictionary = {
 	EnemyType.SKELETON: {"max_health": 100.0, "speed": 60.0, "reward": 10},
 	EnemyType.SLIME: {"max_health": 60.0, "speed": 35.0, "reward": 5},
 	EnemyType.BAT: {"max_health": 40.0, "speed": 100.0, "reward": 8},
 }
+
+static func _get_enemy_scenes() -> Dictionary:
+	if not _enemy_scenes_loaded:
+		_enemy_scenes = {
+			EnemyType.SKELETON: load("res://scenes/enemy_skeleton.tscn"),
+			EnemyType.SLIME: load("res://scenes/enemy_slime.tscn"),
+			EnemyType.BAT: load("res://scenes/enemy_bat.tscn"),
+		}
+		_enemy_scenes_loaded = true
+	return _enemy_scenes
 
 static func get_enemy_type_for_wave(wave: int, random_val: float) -> EnemyType:
 	if wave <= 3:
@@ -36,7 +41,8 @@ static func get_wave_enemy_count(wave: int) -> int:
 	return int(5 + wave * 3 + pow(wave, 1.2))
 
 static func create_enemy(type: EnemyType, path) -> Enemy:
-	var scene = ENEMY_SCENES[type]
+	var scenes = _get_enemy_scenes()
+	var scene = scenes[type]
 	var enemy = scene.instantiate()
 	var config = ENEMY_CONFIGS[type]
 	enemy.max_health = config.max_health

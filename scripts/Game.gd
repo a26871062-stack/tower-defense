@@ -33,6 +33,8 @@ var _is_placing_preview: bool = false
 var _placement_range: float = 150.0
 var _placement_pos: Vector2 = Vector2.ZERO
 
+var game_speed: float = 1.0
+
 @onready var gold_label = $UI/GoldLabel
 @onready var lives_label = $UI/LivesLabel
 @onready var wave_label = $UI/WaveLabel
@@ -40,6 +42,10 @@ var _placement_pos: Vector2 = Vector2.ZERO
 @onready var build_panel = $UI/BuildPanel
 @onready var start_wave_btn = $UI/StartWaveButton
 @onready var next_level_btn = $UI/NextLevelButton
+@onready var speed_down_btn = $UI/SpeedDownButton
+@onready var speed_label = $UI/SpeedLabel
+@onready var speed_up_btn = $UI/SpeedUpButton
+@onready var pause_btn = $UI/PauseButton
 @onready var path_node = $Path
 @onready var path_visual = $Path/PathVisual
 @onready var upgrade_ui = $UI/TowerUpgradeUI
@@ -50,6 +56,9 @@ func _ready():
 	_setup_build_panel()
 	start_wave_btn.pressed.connect(start_next_wave)
 	next_level_btn.pressed.connect(_on_next_level_pressed)
+	speed_down_btn.pressed.connect(_on_speed_down)
+	speed_up_btn.pressed.connect(_on_speed_up)
+	pause_btn.pressed.connect(_toggle_pause)
 	build_panel.tower_selected.connect(_on_tower_selected)
 	upgrade_ui.upgrade_tower.connect(_on_upgrade_tower)
 	upgrade_ui.sell_tower.connect(_on_sell_tower)
@@ -58,6 +67,7 @@ func _ready():
 	build_panel.placement_cancelled.connect(_on_placement_cancelled)
 	game_over.connect(_on_game_over)
 	level_cleared.connect(_on_level_cleared)
+	_update_speed_label()
 
 func _load_level(level_index: int):
 	current_level_index = level_index
@@ -127,22 +137,29 @@ func _input(event):
 				selected_tower.deselect()
 				selected_tower = null
 				upgrade_ui.hide_upgrade_ui()
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
-		if build_panel.is_placing:
-			build_panel.cancel_placement()
-		elif selected_tower:
-			# Check if click is inside any UI node (upgrade UI or build panel)
-			var click_pos = event.global_position
-			var ui = $UI
-			var clicked_on_ui = false
-			for child in ui.get_children():
-				if child is Control and child.visible and child.get_global_rect().has_point(click_pos):
-					clicked_on_ui = true
-					break
-			if not clicked_on_ui:
-				selected_tower.deselect()
-				selected_tower = null
-				upgrade_ui.hide_upgrade_ui()
+	elif event is InputEventKey and event.pressed:
+		if event.keycode == KEY_ESCAPE:
+			if build_panel.is_placing:
+				build_panel.cancel_placement()
+			elif selected_tower:
+				# Check if click is inside any UI node (upgrade UI or build panel)
+				var click_pos = event.global_position
+				var ui = $UI
+				var clicked_on_ui = false
+				for child in ui.get_children():
+					if child is Control and child.visible and child.get_global_rect().has_point(click_pos):
+						clicked_on_ui = true
+						break
+				if not clicked_on_ui:
+					selected_tower.deselect()
+					selected_tower = null
+					upgrade_ui.hide_upgrade_ui()
+		elif event.keycode == KEY_P:
+			_toggle_pause()
+		elif event.keycode == KEY_EQUAL or event.keycode == KEY_KP_ADD:
+			_change_speed(0.5)
+		elif event.keycode == KEY_MINUS or event.keycode == KEY_KP_SUBTRACT:
+			_change_speed(-0.5)
 
 func _place_tower_at(tower_scene: PackedScene, pos: Vector2, cost: int):
 	if gold < cost:
@@ -181,6 +198,7 @@ func _on_upgrade_tower(tower: Tower):
 		return
 	gold -= cost
 	tower.upgrade(cost)
+	SoundManager.play_sfx("upgrade")
 	_update_ui()
 
 func _on_sell_tower(tower: Tower):
@@ -189,6 +207,7 @@ func _on_sell_tower(tower: Tower):
 	towers.erase(tower)
 	tower.queue_free()
 	selected_tower = null
+	SoundManager.play_sfx("sell")
 	_update_ui()
 
 func start_next_wave():
@@ -237,6 +256,7 @@ func _on_enemy_reached_end(enemy):
 func _on_enemy_died(_enemy, reward: int):
 	gold += reward
 	enemies_remaining -= 1
+	SoundManager.play_sfx("coin")
 	_update_ui()
 
 func _on_enemy_reached_tower(_enemy):
@@ -283,6 +303,29 @@ func _process(_delta):
 	if _is_placing_preview:
 		_placement_pos = get_global_mouse_position()
 		queue_redraw()
+
+func _toggle_pause():
+	var is_paused = Engine.time_scale == 0.0
+	if is_paused:
+		Engine.time_scale = game_speed if game_speed > 0 else 1.0
+		_show_message("继续")
+	else:
+		Engine.time_scale = 0.0
+		_show_message("暂停")
+
+func _change_speed(delta: float):
+	game_speed = clamp(game_speed + delta, 0.5, 3.0)
+	Engine.time_scale = game_speed
+	_update_speed_label()
+
+func _on_speed_down():
+	_change_speed(-0.5)
+
+func _on_speed_up():
+	_change_speed(0.5)
+
+func _update_speed_label():
+	speed_label.text = "%.1fx" % game_speed
 
 func _draw():
 	if _is_placing_preview:

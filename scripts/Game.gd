@@ -64,6 +64,7 @@ func _ready():
 	build_panel.insufficient_gold.connect(_on_insufficient_gold)
 	build_panel.placement_started.connect(_on_placement_started)
 	build_panel.placement_cancelled.connect(_on_placement_cancelled)
+	game_over.connect(_on_game_over)
 
 func _process(_delta):
 	if is_wave_active and enemies_remaining <= 0 and get_tree().get_nodes_in_group("enemies").size() == 0:
@@ -173,7 +174,9 @@ func _spawn_enemy():
 	enemy.start_moving()
 
 func _on_enemy_reached_end(enemy):
-	lives -= 1
+	if lives <= 0:
+		return
+	lives = max(0, lives - 1)
 	enemies_remaining -= 1
 	enemy.queue_free()
 	_update_ui()
@@ -195,6 +198,11 @@ func _wave_cleared():
 	var bonus = current_wave * 5
 	gold += bonus
 	_update_ui()
+
+func _on_game_over():
+	is_wave_active = false
+	get_tree().paused = true
+	_show_message("💀 游戏结束！")
 
 func _draw():
 	if _is_placing_preview:

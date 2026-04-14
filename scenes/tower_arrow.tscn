@@ -7,7 +7,6 @@
 radius = 20.0
 
 [node name="Tower" type="Area2D"]
-input_pickable = true
 script = ExtResource("1_tower")
 tower_name = "箭塔"
 base_damage = 20.0

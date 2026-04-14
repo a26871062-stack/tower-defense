@@ -7,7 +7,7 @@ var current_tower: Tower = null
 
 @onready var panel = $Panel
 @onready var tower_name_label = $Panel/VBox/TowerNameLabel
-@onready var level_label = $Panel/VBox/LevelLabel
+@onready var level_label = $Panel/VBox/UpgradeTowerLevelLabel
 @onready var upgrade_btn = $Panel/VBox/UpgradeButton
 @onready var upgrade_cost_label = $Panel/VBox/UpgradeButton/CostLabel
 @onready var sell_btn = $Panel/VBox/SellButton

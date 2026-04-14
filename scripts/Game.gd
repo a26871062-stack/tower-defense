@@ -57,6 +57,7 @@ func _ready():
 	build_panel.tower_selected.connect(_on_tower_selected)
 	upgrade_ui.upgrade_tower.connect(_on_upgrade_tower)
 	upgrade_ui.sell_tower.connect(_on_sell_tower)
+	build_panel.insufficient_gold.connect(_on_insufficient_gold)
 
 func _process(_delta):
 	if is_wave_active and enemies_remaining <= 0 and get_tree().get_nodes_in_group("enemies").size() == 0:
@@ -87,6 +88,13 @@ func _input(event):
 			selected_tower.deselect()
 			selected_tower = null
 			upgrade_ui.hide_upgrade_ui()
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+		if build_panel.is_placing:
+			build_panel.cancel_placement()
+		elif selected_tower:
+			selected_tower.deselect()
+			selected_tower = null
+			upgrade_ui.hide_upgrade_ui()
 
 func _place_tower_at(tower_scene: PackedScene, pos: Vector2, cost: int):
 	var tower = tower_scene.instantiate()
@@ -109,6 +117,7 @@ func _on_tower_selected_by_user(tower: Tower):
 func _on_upgrade_tower(tower: Tower):
 	var cost = tower.get_upgrade_cost()
 	if gold < cost:
+		_show_message("金币不足！需要 %d 金币" % cost)
 		return
 	gold -= cost
 	tower.upgrade(cost)
@@ -181,8 +190,11 @@ func _wave_cleared():
 func _show_message(msg: String):
 	message_label.text = msg
 	message_label.show()
+	message_label.modulate.a = 1.0
 	var tween = create_tween()
 	tween.tween_property(message_label, "modulate:a", 0.0, 2.0)
 	await tween.finished
 	message_label.hide()
-	message_label.modulate.a = 1.0
+
+func _on_insufficient_gold(msg: String):
+	_show_message(msg)

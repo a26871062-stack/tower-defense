@@ -1,6 +1,7 @@
 extends Control
 
 signal tower_selected(tower_scene: PackedScene, cost: int)
+signal insufficient_gold(msg: String)
 
 const TOWER_BUTTON_SCENES = {
 	"arrow": preload("res://scenes/tower_button_arrow.tscn"),
@@ -38,6 +39,7 @@ func _add_tower_button(tower_name: String, cost: int, key: String):
 func _on_tower_button_pressed(index: int):
 	var t = _tower_types[index]
 	if t.cost > get_parent().get_parent().gold:
+		insufficient_gold.emit("金币不足！需要 %d 金币" % t.cost)
 		return
 	is_placing = true
 	placing_tower_scene = t.scene

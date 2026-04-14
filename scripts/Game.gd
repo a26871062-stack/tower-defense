@@ -98,9 +98,8 @@ func _setup_build_panel():
 	build_panel.add_tower_type("炮塔", 120, 120.0, preload("res://scenes/tower_cannon.tscn"))
 
 func _on_tower_selected(tower_scene: PackedScene, cost: int):
-	if gold < cost:
-		_show_message("金币不足！需要 %d 金币" % cost)
-		return
+	if build_panel.is_placing:
+		return  # Already placing
 	_update_ui()
 	build_panel.start_placement(tower_scene, cost)
 

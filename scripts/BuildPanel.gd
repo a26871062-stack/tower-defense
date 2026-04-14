@@ -42,6 +42,8 @@ func _add_tower_button(tower_name: String, cost: int, key: String):
 	tower_container.add_child(btn)
 
 func _on_tower_button_pressed(index: int):
+	if is_placing:
+		return  # Already placing, ignore repeated clicks
 	var t = _tower_types[index]
 	if t.cost > get_parent().get_parent().gold:
 		insufficient_gold.emit("金币不足！需要 %d 金币" % t.cost)

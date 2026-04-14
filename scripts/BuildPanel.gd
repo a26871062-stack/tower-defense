@@ -41,6 +41,6 @@ func start_placement(tower_scene: PackedScene, cost: int):
 	placing_cost = cost
 
 func cancel_placement():
-		is_placing = false
+	is_placing = false
 	placing_tower_scene = null
 	placing_cost = 0

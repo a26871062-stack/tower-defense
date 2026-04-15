@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx987654"]
+[gd_scene format=3 uid="uid://dya87654"]
 
 [ext_resource type="Script" path="res://scripts/ExplosionEffect.gd" id="1_explosion"]
 

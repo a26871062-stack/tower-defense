@@ -85,7 +85,6 @@ theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
 theme_override_font_sizes/font_size = 16
 text = "进入第 2 关"
 
-# ── 右上角速度/暂停控制（直接 anchor 定位，不用容器）────────
 [node name="SpeedDownButton" type="Button" parent="UI"]
 anchors_preset = 1
 anchor_left = 1.0

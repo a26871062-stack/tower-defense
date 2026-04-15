@@ -9,9 +9,7 @@ var current_tower: Tower = null
 @onready var tower_name_label = $Panel/VBox/TowerNameLabel
 @onready var level_label = $Panel/VBox/UpgradeTowerLevelLabel
 @onready var upgrade_btn = $Panel/VBox/UpgradeButton
-@onready var upgrade_cost_label = $Panel/VBox/UpgradeButton/CostLabel
 @onready var sell_btn = $Panel/VBox/SellButton
-@onready var sell_value_label = $Panel/VBox/SellButton/ValueLabel
 
 func _ready():
 	panel.hide()
@@ -49,12 +47,12 @@ func _update_ui():
 
 	if current_tower.level >= 3:
 		upgrade_btn.disabled = true
-		upgrade_cost_label.text = "满级"
+		upgrade_btn.text = "升级  满级"
 	else:
 		upgrade_btn.disabled = false
-		upgrade_cost_label.text = "%d 金币" % upgrade_cost
+		upgrade_btn.text = "升级  %d金币" % upgrade_cost
 
-	sell_value_label.text = "%d 金币" % sell_value
+	sell_btn.text = "出售  %d金币" % sell_value
 
 func _on_upgrade_button_pressed():
 	if current_tower and current_tower.can_upgrade():

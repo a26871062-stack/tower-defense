@@ -31,7 +31,7 @@ max_health = 40.0
 reward = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(*(0.75, 0.45, 0.95))
+modulate = Color(0.75, 0.45, 0.95)
 scale = Vector2(2.0, 2.0)
 texture = ExtResource("2_bat")
 

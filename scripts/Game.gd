@@ -101,6 +101,7 @@ func _load_level(level_index: int):
 	start_wave_btn.show()
 
 func _update_ui():
+	print("[DEBUG] _update_ui called, current_wave=", current_wave)
 	if current_wave > 0:
 		wave_label.text = "第 %d/%d 波" % [current_wave, waves_per_level]
 	else:
@@ -207,6 +208,7 @@ func _on_sell_tower(tower: Tower):
 	_update_ui()
 
 func start_next_wave():
+	print("[DEBUG] start_next_wave called, is_wave_active=", is_wave_active, " current_wave=", current_wave)
 	if is_wave_active:
 		return
 	if current_wave >= waves_per_level:

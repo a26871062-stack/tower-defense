@@ -141,6 +141,7 @@ func _input(event):
 		if event.keycode == KEY_ESCAPE:
 			if build_panel.is_placing:
 				build_panel.cancel_placement()
+				build_panel.show()
 			elif selected_tower:
 				selected_tower.deselect()
 				selected_tower = null

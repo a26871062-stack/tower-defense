@@ -153,7 +153,6 @@ func _setup_background():
 	tile_map.name = "DungeonFloor"
 	tile_map.tile_set = _create_dungeon_tileset()
 	tile_map.cell_quadrant_size = 16
-	tile_map.format = TileMap.FORMAT_2D
 	tile_map.z_index = -10  # Behind everything
 	# Fill with floor tiles across entire game area
 	var floor_tiles = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]  # Row 0 = top of tileset = stone floor

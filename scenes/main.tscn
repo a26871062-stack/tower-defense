@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/PathVisualizer.gd" id="4_path"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_game")
+script = ExtResource("1_game"]
 
 [node name="Path" type="Node2D" parent="."]
 
@@ -16,7 +16,7 @@ default_color = Color(0.35, 0.28, 0.2, 0.85)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
-script = ExtResource("4_path")
+script = ExtResource("4_path"]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -85,57 +85,61 @@ theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
 theme_override_font_sizes/font_size = 18
 text = "进入第 2 关"
 
-# ── 顶部控制栏（速度 + 暂停）───────────────────────────────
-[node name="TopBarRight" type="Panel" parent="UI"]
+# ── 右上角速度/暂停控制（直接 anchor 定位，不用容器）────────
+[node name="SpeedDownButton" type="Button" parent="UI"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -220.0
+offset_left = -145.0
 offset_top = 8.0
-offset_right = -8.0
-offset_bottom = 58.0
+offset_right = -108.0
+offset_bottom = 50.0
 grow_horizontal = 0
-
-[node name="HBox" type="HBoxContainer" parent="UI/TopBarRight"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 6.0
-offset_top = 4.0
-offset_right = -6.0
-offset_bottom = 46.0
-alignment = 1
-
-[node name="SpeedDownButton" type="Button" parent="UI/TopBarRight/HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
 theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
 theme_override_font_sizes/font_size = 18
 text = "◀"
 
-[node name="SpeedLabel" type="Label" parent="UI/TopBarRight/HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="SpeedLabel" type="Label" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -102.0
+offset_top = 8.0
+offset_right = -52.0
+offset_bottom = 50.0
+grow_horizontal = 0
 theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_font_sizes/font_size = 18
 text = "1.0x"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpeedUpButton" type="Button" parent="UI/TopBarRight/HBox"]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="SpeedUpButton" type="Button" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_top = 8.0
+offset_right = -9.0
+offset_bottom = 50.0
+grow_horizontal = 0
 theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
 theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
 theme_override_font_sizes/font_size = 18
 text = "▶"
 
-[node name="PauseButton" type="Button" parent="UI/TopBarRight/HBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-custom_minimum_size = Vector2(70, 0)
+[node name="PauseButton" type="Button" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -165.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 50.0
+grow_horizontal = 0
 theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
 theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
@@ -158,7 +162,7 @@ offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("3_upgrade")
+script = ExtResource("3_upgrade"]
 
 [node name="Panel" type="Panel" parent="UI/TowerUpgradeUI"]
 layout_mode = 1

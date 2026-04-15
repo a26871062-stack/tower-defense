@@ -23,7 +23,7 @@ script = ExtResource("4_path")
 [node name="TopBar" type="Panel" parent="UI"]
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 260.0
+offset_right = 190.0
 offset_bottom = 210.0
 
 [node name="GoldLabel" type="Label" parent="UI"]
@@ -205,18 +205,7 @@ theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
 theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
 theme_override_font_sizes/font_size = 16
-text = "升级"
-
-[node name="CostLabel" type="Label" parent="UI/TowerUpgradeUI/Panel/VBox/UpgradeButton"]
-layout_mode = 1
-offset_left = 0.0
-offset_top = 20.0
-offset_right = 0.0
-offset_bottom = 20.0
-theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
-theme_override_font_sizes/font_size = 12
-text = "30 金币"
-horizontal_alignment = 1
+text = "升级  30金币"
 
 [node name="SellButton" type="Button" parent="UI/TowerUpgradeUI/Panel/VBox"]
 layout_mode = 2
@@ -225,18 +214,7 @@ theme_override_colors/font_color = Color(1, 0.6, 0.5, 1)
 theme_override_colors/font_hover_color = Color(1, 0.8, 0.7, 1)
 theme_override_colors/font_pressed_color = Color(0.8, 0.3, 0.2, 1)
 theme_override_font_sizes/font_size = 16
-text = "出售"
-
-[node name="ValueLabel" type="Label" parent="UI/TowerUpgradeUI/Panel/VBox/SellButton"]
-layout_mode = 1
-offset_left = 0.0
-offset_top = 20.0
-offset_right = 0.0
-offset_bottom = 20.0
-theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
-theme_override_font_sizes/font_size = 12
-text = "25 金币"
-horizontal_alignment = 1
+text = "出售  25金币" 
 
 [node name="MessageLabel" type="Label" parent="UI"]
 anchors_preset = 5

@@ -40,7 +40,7 @@ func _ready():
 	end_cap_mode = LINE_CAP_ROUND
 	z_index = 0
 
-func setup_path(path_points: Array[Vector2]):
+func setup_path(path_points):
 	clear_points()
 	for point in path_points:
 		add_point(point)

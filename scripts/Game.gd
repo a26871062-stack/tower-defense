@@ -52,6 +52,8 @@ var game_speed: float = 1.0
 @onready var message_label = $UI/MessageLabel
 
 func _ready():
+	print("[DEBUG] wave_label node:", wave_label)
+	print("[DEBUG] wave_label text:", wave_label.text if wave_label else "NULL!!")
 	_load_level(0)
 	_setup_build_panel()
 	start_wave_btn.pressed.connect(start_next_wave)

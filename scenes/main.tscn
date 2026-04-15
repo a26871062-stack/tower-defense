@@ -24,86 +24,123 @@ script = ExtResource("4_path")
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 420.0
-offset_bottom = 210.0
+offset_bottom = 215.0
 
 [node name="GoldLabel" type="Label" parent="UI"]
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 200.0
 offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_font_sizes/font_size = 24
 text = "💰 金币: 100"
 
 [node name="LivesLabel" type="Label" parent="UI"]
 offset_left = 20.0
-offset_top = 50.0
+offset_top = 55.0
 offset_right = 200.0
-offset_bottom = 80.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
 theme_override_font_sizes/font_size = 24
 text = "❤️ 生命: 20"
 
 [node name="LevelLabel" type="Label" parent="UI"]
 offset_left = 20.0
-offset_top = 80.0
+offset_top = 90.0
 offset_right = 400.0
-offset_bottom = 110.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0.96, 0.92, 0.82, 1)
 theme_override_font_sizes/font_size = 20
 text = "第 1 关 - 新手试炼"
 
 [node name="WaveLabel" type="Label" parent="UI"]
 offset_left = 20.0
-offset_top = 115.0
+offset_top = 125.0
 offset_right = 200.0
-offset_bottom = 145.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0.96, 0.92, 0.82, 1)
 theme_override_font_sizes/font_size = 24
 text = "准备开始"
 
 [node name="StartWaveButton" type="Button" parent="UI"]
 offset_left = 20.0
-offset_top = 155.0
-offset_right = 150.0
-offset_bottom = 195.0
+offset_top = 165.0
+offset_right = 180.0
+offset_bottom = 205.0
+theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
+theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
+theme_override_font_sizes/font_size = 18
 text = "开始波次"
 
 [node name="NextLevelButton" type="Button" parent="UI"]
 visible = false
 offset_left = 20.0
-offset_top = 155.0
+offset_top = 165.0
 offset_right = 220.0
-offset_bottom = 195.0
+offset_bottom = 205.0
+theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
+theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
 theme_override_font_sizes/font_size = 18
 text = "进入第 2 关"
 
-[node name="SpeedDownButton" type="Button" parent="UI"]
-offset_left = 230.0
-offset_top = 155.0
-offset_right = 270.0
-offset_bottom = 195.0
-text = "-"
+# ── 顶部控制栏（速度 + 暂停）───────────────────────────────
+[node name="TopBarRight" type="Panel" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 58.0
+grow_horizontal = 0
 
-[node name="SpeedLabel" type="Label" parent="UI"]
-offset_left = 275.0
-offset_top = 155.0
-offset_right = 340.0
-offset_bottom = 195.0
+[node name="HBox" type="HBoxContainer" parent="UI/TopBarRight"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 6.0
+offset_top = 4.0
+offset_right = -6.0
+offset_bottom = 46.0
+alignment = 1
+
+[node name="SpeedDownButton" type="Button" parent="UI/TopBarRight/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
+theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
+theme_override_font_sizes/font_size = 18
+text = "◀"
+
+[node name="SpeedLabel" type="Label" parent="UI/TopBarRight/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_font_sizes/font_size = 18
 text = "1.0x"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpeedUpButton" type="Button" parent="UI"]
-offset_left = 345.0
-offset_top = 155.0
-offset_right = 385.0
-offset_bottom = 195.0
-text = "+"
+[node name="SpeedUpButton" type="Button" parent="UI/TopBarRight/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
+theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
+theme_override_font_sizes/font_size = 18
+text = "▶"
 
-[node name="PauseButton" type="Button" parent="UI"]
-offset_left = 395.0
-offset_top = 155.0
-offset_right = 455.0
-offset_bottom = 195.0
-text = "暂停"
+[node name="PauseButton" type="Button" parent="UI/TopBarRight/HBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+custom_minimum_size = Vector2(70, 0)
+theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
+theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
+theme_override_font_sizes/font_size = 16
+text = "⏸ 暂停"
 
 [node name="BuildPanel" parent="UI" instance=ExtResource("2_build")]
 
@@ -131,6 +168,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(0.22, 0.19, 0.12, 0.95)
 
 [node name="VBox" type="VBoxContainer" parent="UI/TowerUpgradeUI/Panel"]
 layout_mode = 1
@@ -152,12 +190,17 @@ horizontal_alignment = 1
 
 [node name="UpgradeTowerLevelLabel" type="Label" parent="UI/TowerUpgradeUI/Panel/VBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.92, 0.82, 1)
 theme_override_font_sizes/font_size = 14
 text = "等级: 1 / 3"
 horizontal_alignment = 1
 
 [node name="UpgradeButton" type="Button" parent="UI/TowerUpgradeUI/Panel/VBox"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
+theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
+theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
+theme_override_font_sizes/font_size = 16
 text = "升级"
 
 [node name="CostLabel" type="Label" parent="UI/TowerUpgradeUI/Panel/VBox/UpgradeButton"]
@@ -165,7 +208,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 25.0
+offset_top = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
@@ -176,6 +219,9 @@ horizontal_alignment = 1
 [node name="SellButton" type="Button" parent="UI/TowerUpgradeUI/Panel/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.6, 0.5, 1)
+theme_override_colors/font_hover_color = Color(1, 0.8, 0.7, 1)
+theme_override_colors/font_pressed_color = Color(0.8, 0.3, 0.2, 1)
+theme_override_font_sizes/font_size = 16
 text = "出售"
 
 [node name="ValueLabel" type="Label" parent="UI/TowerUpgradeUI/Panel/VBox/SellButton"]
@@ -183,7 +229,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 25.0
+offset_top = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)

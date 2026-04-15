@@ -42,10 +42,10 @@ var game_speed: float = 1.0
 @onready var build_panel = $UI/BuildPanel
 @onready var start_wave_btn = $UI/StartWaveButton
 @onready var next_level_btn = $UI/NextLevelButton
-@onready var speed_down_btn = $UI/SpeedDownButton
-@onready var speed_label = $UI/SpeedLabel
-@onready var speed_up_btn = $UI/SpeedUpButton
-@onready var pause_btn = $UI/PauseButton
+@onready var speed_down_btn = $UI/TopBarRight/HBox/SpeedDownButton
+@onready var speed_label = $UI/TopBarRight/HBox/SpeedLabel
+@onready var speed_up_btn = $UI/TopBarRight/HBox/SpeedUpButton
+@onready var pause_btn = $UI/TopBarRight/HBox/PauseButton
 @onready var path_node = $Path
 @onready var path_visual = $Path/PathVisual
 @onready var upgrade_ui = $UI/TowerUpgradeUI
@@ -309,9 +309,13 @@ func _toggle_pause():
 	if is_paused:
 		Engine.time_scale = game_speed if game_speed > 0 else 1.0
 		_show_message("继续")
+		pause_btn.text = "⏸ 暂停"
+		speed_label.add_theme_color_override("font_color", Color(0.96, 0.71, 0.17))
 	else:
 		Engine.time_scale = 0.0
 		_show_message("暂停")
+		pause_btn.text = "▶ 继续"
+		speed_label.add_theme_color_override("font_color", Color(0.5, 0.5, 0.5))
 
 func _change_speed(delta: float):
 	game_speed = clamp(game_speed + delta, 0.5, 3.0)

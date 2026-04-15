@@ -55,6 +55,7 @@ var game_speed: float = 1.0
 
 func _ready():
 	_setup_ui_style()
+	_setup_background()
 	_load_level(0)
 	_setup_build_panel()
 	start_wave_btn.pressed.connect(start_next_wave)
@@ -145,6 +146,41 @@ func _setup_ui_style():
 		var heart_icon = $UI/LivesLabel/HeartIcon
 		heart_icon.texture = heart_tex
 		heart_icon.custom_minimum_size = Vector2(24, 24)
+
+func _setup_background():
+	# Create TileMap for dungeon floor background
+	var tile_map = TileMap.new()
+	tile_map.name = "DungeonFloor"
+	tile_map.tile_set = _create_dungeon_tileset()
+	tile_map.cell_quadrant_size = 16
+	tile_map.format = TileMap.FORMAT_2D
+	tile_map.z_index = -10  # Behind everything
+	# Fill with floor tiles across entire game area
+	var floor_tiles = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]  # Row 0 = top of tileset = stone floor
+	for x in range(0, 85):  # Cover 1280px at 16px tiles
+		for y in range(0, 50):  # Cover 720px at 16px tiles
+			var tile_id = floor_tiles[randi() % len(floor_tiles)]
+			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(tile_id, 0))
+	add_child(tile_map)
+
+func _create_dungeon_tileset() -> TileSet:
+	var ts = TileSet.new()
+	ts.tile_size = Vector2i(16, 16)
+	# Source: atlas from tilemap_packed.png
+	var src = TileSetAtlasSource.new()
+	src.texture = load("res://assets/tiny-dungeon/Tilemap/tilemap_packed.png")
+	src.texture_region_size = Vector2i(16, 16)
+	src.margins = Vector2i(0, 0)
+	src.separation = Vector2i(0, 0)
+	src.use_padding = false
+	src.tile_size = Vector2i(16, 16)
+	# Create 132 tiles (12 wide x 11 tall)
+	for i in range(132):
+		var tx = i % 12
+		var ty = i / 12
+		src.create_tile(Vector2i(tx, ty))
+	ts.add_source(src)
+	return ts
 
 func _load_level(level_index: int):
 	current_level_index = level_index

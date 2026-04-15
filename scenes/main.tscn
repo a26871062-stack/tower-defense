@@ -23,7 +23,7 @@ script = ExtResource("4_path")
 [node name="TopBar" type="Panel" parent="UI"]
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 170.0
+offset_right = 360.0
 offset_bottom = 225.0
 
 [node name="GoldLabel" type="Label" parent="UI"]
@@ -129,7 +129,7 @@ theme_override_font_sizes/font_size = 18
 text = "▶"
 
 [node name="PauseButton" type="Button" parent="UI/TopBarRight"]
-offset_left = 150.0
+offset_left = 126.0
 offset_top = 5.0
 offset_right = 222.0
 offset_bottom = 43.0

@@ -13,7 +13,7 @@ func _ready():
 	_shadow_path.begin_cap_mode = Line2D.LINE_CAP_ROUND
 	_shadow_path.end_cap_mode = Line2D.LINE_CAP_ROUND
 	_shadow_path.z_index = -1
-	get_parent().add_child(_shadow_path)
+	get_parent().call_deferred("add_child", _shadow_path)
 
 	# Start marker: green glow square
 	_start_marker = Polygon2D.new()
@@ -22,7 +22,7 @@ func _ready():
 		Vector2(-12, -12), Vector2(12, -12), Vector2(12, 12), Vector2(-12, 12)
 	])
 	_start_marker.z_index = -1
-	get_parent().add_child(_start_marker)
+	get_parent().call_deferred("add_child", _start_marker)
 
 	# End marker: red glow square
 	_end_marker = Polygon2D.new()
@@ -31,7 +31,7 @@ func _ready():
 		Vector2(-14, -14), Vector2(14, -14), Vector2(14, 14), Vector2(-14, 14)
 	])
 	_end_marker.z_index = -1
-	get_parent().add_child(_end_marker)
+	get_parent().call_deferred("add_child", _end_marker)
 
 	width = 40.0
 	default_color = Color(0.38, 0.28, 0.17, 0.92)

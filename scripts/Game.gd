@@ -160,7 +160,7 @@ func _setup_background():
 		for y in range(0, 50):  # Cover 720px at 16px tiles
 			var tile_id = floor_tiles[randi() % len(floor_tiles)]
 			tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(tile_id, 0))
-	add_child(tile_map)
+	call_deferred("add_child", tile_map)
 
 func _create_dungeon_tileset() -> TileSet:
 	var ts = TileSet.new()

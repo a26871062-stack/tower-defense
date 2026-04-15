@@ -36,6 +36,7 @@ func _process(delta):
 		_slow_timer -= delta
 		if _slow_timer <= 0:
 			_slow_factor = 1.0
+			_restore_slow_color()
 
 func start_moving():
 	is_moving = true
@@ -58,6 +59,11 @@ func apply_slow(factor: float, duration: float):
 	# factor 是速度倍率，0.5 表示速度降为50%
 	_slow_factor = factor
 	_slow_timer = max(_slow_timer, duration)
+	# 视觉：蓝色/紫色调
+	sprite.modulate = Color(0.4, 0.6, 1.0, 1.0)
+
+func _restore_slow_color():
+	sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func take_damage(amount: float):
 	health -= amount

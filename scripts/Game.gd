@@ -105,9 +105,14 @@ func _load_level(level_index: int):
 func _update_ui():
 	print("[DEBUG] _update_ui called, current_wave=", current_wave)
 	if current_wave > 0:
-		wave_label.text = "第 %d/%d 波" % [current_wave, waves_per_level]
+		var new_text = "第 %d/%d 波" % [current_wave, waves_per_level]
+		print("[DEBUG] setting wave_label to: '", new_text, "' current_wave=", current_wave)
+		wave_label.text = new_text
+		print("[DEBUG] after set, wave_label.text='", wave_label.text, "'")
 	else:
+		print("[DEBUG] setting wave_label to: '准备开始'")
 		wave_label.text = "准备开始"
+		print("[DEBUG] after set, wave_label.text='", wave_label.text, "'")
 	gold_label.text = "💰 金币: %d" % gold
 	lives_label.text = "❤️ 生命: %d" % lives
 	var level_data = LevelManager.get_level(current_level_index)

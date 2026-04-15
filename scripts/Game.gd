@@ -52,8 +52,6 @@ var game_speed: float = 1.0
 @onready var message_label = $UI/MessageLabel
 
 func _ready():
-	print("[DEBUG] wave_label node:", wave_label)
-	print("[DEBUG] wave_label text:", wave_label.text if wave_label else "NULL!!")
 	_load_level(0)
 	_setup_build_panel()
 	start_wave_btn.pressed.connect(start_next_wave)
@@ -103,16 +101,11 @@ func _load_level(level_index: int):
 	start_wave_btn.show()
 
 func _update_ui():
-	print("[DEBUG] _update_ui called, current_wave=", current_wave)
 	if current_wave > 0:
 		var new_text = "第 %d/%d 波" % [current_wave, waves_per_level]
-		print("[DEBUG] setting wave_label to: '", new_text, "' current_wave=", current_wave)
 		wave_label.text = new_text
-		print("[DEBUG] after set, wave_label.text='", wave_label.text, "'")
 	else:
-		print("[DEBUG] setting wave_label to: '准备开始'")
 		wave_label.text = "准备开始"
-		print("[DEBUG] after set, wave_label.text='", wave_label.text, "'")
 	gold_label.text = "💰 金币: %d" % gold
 	lives_label.text = "❤️ 生命: %d" % lives
 	var level_data = LevelManager.get_level(current_level_index)
@@ -215,7 +208,6 @@ func _on_sell_tower(tower: Tower):
 	_update_ui()
 
 func start_next_wave():
-	print("[DEBUG] start_next_wave called, is_wave_active=", is_wave_active, " current_wave=", current_wave)
 	if is_wave_active:
 		return
 	if current_wave >= waves_per_level:

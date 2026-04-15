@@ -171,7 +171,6 @@ func _create_dungeon_tileset() -> TileSet:
 	src.texture_region_size = Vector2i(16, 16)
 	src.margins = Vector2i(0, 0)
 	src.separation = Vector2i(0, 0)
-	src.tile_size = Vector2i(16, 16)
 	# Create 132 tiles (12 wide x 11 tall)
 	for i in range(132):
 		var tx = i % 12

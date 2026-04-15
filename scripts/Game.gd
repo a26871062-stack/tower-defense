@@ -130,7 +130,7 @@ func _setup_ui_style():
 	btn_hover.corner_radius_top_right = 4
 	btn_hover.corner_radius_bottom_left = 4
 	btn_hover.corner_radius_bottom_right = 4
-	for btn in [speed_down_btn, speed_up_btn, pause_btn]:
+	for btn in [speed_down_btn, speed_up_btn, pause_btn, start_wave_btn, next_level_btn]:
 		btn.add_theme_stylebox_override("normal", btn_normal)
 		btn.add_theme_stylebox_override("hover", btn_hover)
 		btn.add_theme_stylebox_override("pressed", btn_normal)

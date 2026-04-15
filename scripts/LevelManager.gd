@@ -10,9 +10,9 @@ const LEVELS: Array[Dictionary] = [
 		"bonus_gold": 0,
 		"bonus_lives": 0,
 		"path": [
-			Vector2(50, 360), Vector2(200, 360), Vector2(200, 200),
-			Vector2(500, 200), Vector2(500, 400), Vector2(800, 400),
-			Vector2(800, 300), Vector2(1100, 300), Vector2(1400, 300),
+			Vector2(50, 440), Vector2(200, 440), Vector2(200, 280),
+			Vector2(500, 280), Vector2(500, 480), Vector2(800, 480),
+			Vector2(800, 380), Vector2(1100, 380), Vector2(1400, 380),
 		],
 	},
 	{
@@ -21,9 +21,9 @@ const LEVELS: Array[Dictionary] = [
 		"bonus_gold": 50,
 		"bonus_lives": 0,
 		"path": [
-			Vector2(50, 150), Vector2(300, 150), Vector2(300, 500),
-			Vector2(600, 500), Vector2(600, 150), Vector2(900, 150),
-			Vector2(900, 500), Vector2(1200, 500), Vector2(1200, 300),
+			Vector2(50, 230), Vector2(300, 230), Vector2(300, 580),
+			Vector2(600, 580), Vector2(600, 230), Vector2(900, 230),
+			Vector2(900, 580), Vector2(1200, 580), Vector2(1200, 380),
 		],
 	},
 	{
@@ -32,10 +32,10 @@ const LEVELS: Array[Dictionary] = [
 		"bonus_gold": 80,
 		"bonus_lives": 5,
 		"path": [
-			Vector2(50, 600), Vector2(200, 600), Vector2(200, 100),
-			Vector2(500, 100), Vector2(500, 600), Vector2(800, 600),
-			Vector2(800, 200), Vector2(1100, 200), Vector2(1100, 500),
-			Vector2(1400, 500),
+			Vector2(50, 680), Vector2(200, 680), Vector2(200, 180),
+			Vector2(500, 180), Vector2(500, 680), Vector2(800, 680),
+			Vector2(800, 280), Vector2(1100, 280), Vector2(1100, 580),
+			Vector2(1400, 580),
 		],
 	},
 	{
@@ -44,11 +44,11 @@ const LEVELS: Array[Dictionary] = [
 		"bonus_gold": 100,
 		"bonus_lives": 5,
 		"path": [
-			Vector2(50, 300), Vector2(150, 300), Vector2(150, 550),
-			Vector2(350, 550), Vector2(350, 200), Vector2(550, 200),
-			Vector2(550, 500), Vector2(750, 500), Vector2(750, 150),
-			Vector2(950, 150), Vector2(950, 450), Vector2(1150, 450),
-			Vector2(1150, 300), Vector2(1400, 300),
+			Vector2(50, 380), Vector2(150, 380), Vector2(150, 630),
+			Vector2(350, 630), Vector2(350, 280), Vector2(550, 280),
+			Vector2(550, 580), Vector2(750, 580), Vector2(750, 230),
+			Vector2(950, 230), Vector2(950, 530), Vector2(1150, 530),
+			Vector2(1150, 380), Vector2(1400, 380),
 		],
 	},
 	{
@@ -57,12 +57,12 @@ const LEVELS: Array[Dictionary] = [
 		"bonus_gold": 150,
 		"bonus_lives": 10,
 		"path": [
-			Vector2(50, 600), Vector2(150, 600), Vector2(150, 200),
-			Vector2(350, 200), Vector2(350, 500), Vector2(500, 500),
-			Vector2(500, 100), Vector2(700, 100), Vector2(700, 550),
-			Vector2(900, 550), Vector2(900, 250), Vector2(1100, 250),
-			Vector2(1100, 500), Vector2(1300, 500), Vector2(1300, 350),
-			Vector2(1450, 350),
+			Vector2(50, 680), Vector2(150, 680), Vector2(150, 280),
+			Vector2(350, 280), Vector2(350, 580), Vector2(500, 580),
+			Vector2(500, 180), Vector2(700, 180), Vector2(700, 630),
+			Vector2(900, 630), Vector2(900, 330), Vector2(1100, 330),
+			Vector2(1100, 580), Vector2(1300, 580), Vector2(1300, 430),
+			Vector2(1450, 430),
 		],
 	},
 ]

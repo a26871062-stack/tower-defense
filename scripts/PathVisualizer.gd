@@ -54,7 +54,7 @@ func _update_shadow():
 		for i in range(get_point_count()):
 			_shadow_path.add_point(get_point_position(i) + offset)
 
-func _update_markers(path_points: Array[Vector2]):
+func _update_markers(path_points):
 	if path_points.size() >= 2:
 		_start_marker.position = path_points[0]
 		_end_marker.position = path_points[-1]

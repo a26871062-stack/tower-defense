@@ -38,7 +38,7 @@ static func get_enemy_type_for_wave(wave: int, random_val: float) -> EnemyType:
 			return EnemyType.BAT
 
 static func get_wave_enemy_count(wave: int) -> int:
-	return int(5 + wave * 3 + pow(wave, 1.2))
+	return int(wave * 5 + pow(wave, 1.3))
 
 static func create_enemy(type: EnemyType, path) -> Enemy:
 	var scenes = _get_enemy_scenes()

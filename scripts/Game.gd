@@ -11,7 +11,7 @@ const ENEMY_SCENE = preload("res://scenes/enemy.tscn")
 @export var starting_gold: int = 100
 @export var starting_lives: int = 20
 @export var wave_interval: float = 10.0
-@export var waves_per_level: int = 3  # 每个关卡的波次数
+@export var waves_per_level: int = 5  # 每个关卡的波次数
 
 var gold: int
 var lives: int

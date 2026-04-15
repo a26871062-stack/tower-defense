@@ -3,18 +3,24 @@ extends Node2D
 var _particles: Array = []
 var _duration: float = 0.4
 var _elapsed: float = 0.0
+var _base_color: Color = Color(1, 0.3, 0.1)
+
+func setup(color: Color = Color(1, 0.3, 0.1)):
+	_base_color = color
+	for p in _particles:
+		p["node"].color = _base_color
 
 func _ready():
-	for i in range(6):
+	for i in range(8):
 		var circle = ColorRect.new()
-		circle.size = Vector2(10, 10)
-		circle.color = Color(1, 0.3, 0.1, 0.8)
-		circle.position = Vector2(-5, -5)
+		circle.size = Vector2(8, 8)
+		circle.color = _base_color
+		circle.position = Vector2(-4, -4)
 		add_child(circle)
 		_particles.append({
 			"node": circle,
 			"angle": randf() * TAU,
-			"speed": 50 + randf() * 50,
+			"speed": 40 + randf() * 60,
 		})
 
 func _process(delta):

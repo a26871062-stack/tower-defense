@@ -104,6 +104,9 @@ func _show_death_effect():
 	if death_effect_scene:
 		var effect = death_effect_scene.instantiate()
 		effect.global_position = global_position
+		# Use sprite's current modulate as death particle color
+		var death_color = sprite.modulate if sprite else Color(1, 0.3, 0.1)
+		effect.setup(death_color)
 		get_parent().add_child(effect)
 
 func _setup_health_bar_style():

@@ -144,8 +144,8 @@ func _input(event):
 				build_panel.show()
 			elif selected_tower:
 				selected_tower.deselect()
-				selected_tower = null
-					upgrade_ui.hide_upgrade_ui()
+			selected_tower = null
+			upgrade_ui.hide_upgrade_ui()
 		elif event.keycode == KEY_P:
 			_toggle_pause()
 		elif event.keycode == KEY_EQUAL or event.keycode == KEY_KP_ADD:

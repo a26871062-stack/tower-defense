@@ -26,23 +26,41 @@ offset_top = 8.0
 offset_right = 360.0
 offset_bottom = 225.0
 
-[node name="GoldLabel" type="Label" parent="UI"]
+[node name="GoldLabel" type="HBoxContainer" parent="UI"]
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 200.0
 offset_bottom = 50.0
+
+[node name="CoinIcon" type="TextureRect" parent="UI/GoldLabel"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="UI/GoldLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_font_sizes/font_size = 24
-text = "💰 金币: 100"
+text = "金币: 100"
 
-[node name="LivesLabel" type="Label" parent="UI"]
+[node name="LivesLabel" type="HBoxContainer" parent="UI"]
 offset_left = 20.0
 offset_top = 55.0
 offset_right = 200.0
 offset_bottom = 85.0
+
+[node name="HeartIcon" type="TextureRect" parent="UI/LivesLabel"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+stretch_mode = 0
+
+[node name="Text" type="Label" parent="UI/LivesLabel"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
 theme_override_font_sizes/font_size = 24
-text = "❤️ 生命: 20"
+text = "生命: 20"
 
 [node name="LevelLabel" type="Label" parent="UI"]
 offset_left = 20.0

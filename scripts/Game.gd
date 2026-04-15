@@ -37,8 +37,8 @@ var game_speed: float = 1.0
 
 @onready var top_bar = $UI/TopBar
 @onready var top_bar_right = $UI/TopBarRight
-@onready var gold_label = $UI/GoldLabel
-@onready var lives_label = $UI/LivesLabel
+@onready var gold_label = $UI/GoldLabel/Text
+@onready var lives_label = $UI/LivesLabel/Text
 @onready var wave_label = $UI/WaveLabel
 @onready var level_label = $UI/LevelLabel
 @onready var build_panel = $UI/BuildPanel
@@ -134,6 +134,17 @@ func _setup_ui_style():
 		btn.add_theme_stylebox_override("normal", btn_normal)
 		btn.add_theme_stylebox_override("hover", btn_hover)
 		btn.add_theme_stylebox_override("pressed", btn_normal)
+	# Attach pixel icons to gold/lives labels
+	var coin_tex = load("res://assets/generated/coin.png")
+	var heart_tex = load("res://assets/generated/heart.png")
+	if coin_tex:
+		var coin_icon = $UI/GoldLabel/CoinIcon
+		coin_icon.texture = coin_tex
+		coin_icon.custom_minimum_size = Vector2(24, 24)
+	if heart_tex:
+		var heart_icon = $UI/LivesLabel/HeartIcon
+		heart_icon.texture = heart_tex
+		heart_icon.custom_minimum_size = Vector2(24, 24)
 
 func _load_level(level_index: int):
 	current_level_index = level_index

@@ -35,6 +35,8 @@ var _placement_pos: Vector2 = Vector2.ZERO
 
 var game_speed: float = 1.0
 
+@onready var top_bar = $UI/TopBar
+@onready var top_bar_right = $UI/TopBarRight
 @onready var gold_label = $UI/GoldLabel
 @onready var lives_label = $UI/LivesLabel
 @onready var wave_label = $UI/WaveLabel
@@ -52,6 +54,7 @@ var game_speed: float = 1.0
 @onready var message_label = $UI/MessageLabel
 
 func _ready():
+	_setup_ui_style()
 	_load_level(0)
 	_setup_build_panel()
 	start_wave_btn.pressed.connect(start_next_wave)
@@ -68,6 +71,69 @@ func _ready():
 	game_over.connect(_on_game_over)
 	level_cleared.connect(_on_level_cleared)
 	_update_speed_label()
+
+func _setup_ui_style():
+	# TopBar: dark bg + gold border
+	var topbar_sb = StyleBoxFlat.new()
+	topbar_sb.bg_color = Color(0.16, 0.13, 0.08, 0.95)
+	topbar_sb.border_width_left = 3
+	topbar_sb.border_width_top = 3
+	topbar_sb.border_width_right = 3
+	topbar_sb.border_width_bottom = 3
+	topbar_sb.border_color = Color(0.76, 0.58, 0.17, 0.9)
+	topbar_sb.corner_radius_top_left = 6
+	topbar_sb.corner_radius_top_right = 6
+	topbar_sb.corner_radius_bottom_left = 6
+	topbar_sb.corner_radius_bottom_right = 6
+	topbar_sb.content_margin_left = 8
+	topbar_sb.content_margin_top = 8
+	topbar_sb.content_margin_right = 8
+	topbar_sb.content_margin_bottom = 8
+	top_bar.add_theme_stylebox_override("panel", topbar_sb)
+	# TopBarRight: same style
+	var tbr_sb = StyleBoxFlat.new()
+	tbr_sb.bg_color = Color(0.16, 0.13, 0.08, 0.95)
+	tbr_sb.border_width_left = 3
+	tbr_sb.border_width_top = 3
+	tbr_sb.border_width_right = 3
+	tbr_sb.border_width_bottom = 3
+	tbr_sb.border_color = Color(0.76, 0.58, 0.17, 0.9)
+	tbr_sb.corner_radius_top_left = 6
+	tbr_sb.corner_radius_top_right = 6
+	tbr_sb.corner_radius_bottom_left = 6
+	tbr_sb.corner_radius_bottom_right = 6
+	tbr_sb.content_margin_left = 6
+	tbr_sb.content_margin_top = 4
+	tbr_sb.content_margin_right = 6
+	tbr_sb.content_margin_bottom = 4
+	top_bar_right.add_theme_stylebox_override("panel", tbr_sb)
+	# SpeedLabel & buttons: gold color theme
+	var btn_normal = StyleBoxFlat.new()
+	btn_normal.bg_color = Color(0.18, 0.14, 0.09, 0.9)
+	btn_normal.border_width_left = 2
+	btn_normal.border_width_top = 2
+	btn_normal.border_width_right = 2
+	btn_normal.border_width_bottom = 2
+	btn_normal.border_color = Color(0.76, 0.58, 0.17, 0.7)
+	btn_normal.corner_radius_top_left = 4
+	btn_normal.corner_radius_top_right = 4
+	btn_normal.corner_radius_bottom_left = 4
+	btn_normal.corner_radius_bottom_right = 4
+	var btn_hover = StyleBoxFlat.new()
+	btn_hover.bg_color = Color(0.28, 0.22, 0.12, 0.95)
+	btn_hover.border_width_left = 2
+	btn_hover.border_width_top = 2
+	btn_hover.border_width_right = 2
+	btn_hover.border_width_bottom = 2
+	btn_hover.border_color = Color(1.0, 0.88, 0.4, 0.9)
+	btn_hover.corner_radius_top_left = 4
+	btn_hover.corner_radius_top_right = 4
+	btn_hover.corner_radius_bottom_left = 4
+	btn_hover.corner_radius_bottom_right = 4
+	for btn in [speed_down_btn, speed_up_btn, pause_btn]:
+		btn.add_theme_stylebox_override("normal", btn_normal)
+		btn.add_theme_stylebox_override("hover", btn_hover)
+		btn.add_theme_stylebox_override("pressed", btn_normal)
 
 func _load_level(level_index: int):
 	current_level_index = level_index
@@ -106,8 +172,8 @@ func _update_ui():
 		wave_label.text = new_text
 	else:
 		wave_label.text = "准备开始"
-	gold_label.text = "💰 金币: %d" % gold
-	lives_label.text = "❤️ 生命: %d" % lives
+	gold_label.text = "金币: %d" % gold
+	lives_label.text = "生命: %d" % lives
 	var level_data = LevelManager.get_level(current_level_index)
 	if level_data:
 		level_label.text = level_data["name"]

@@ -101,14 +101,15 @@ func _load_level(level_index: int):
 	start_wave_btn.show()
 
 func _update_ui():
-	var level_data = LevelManager.get_level(current_level_index)
-	level_label.text = level_data["name"]
 	if current_wave > 0:
 		wave_label.text = "第 %d/%d 波" % [current_wave, waves_per_level]
 	else:
 		wave_label.text = "准备开始"
 	gold_label.text = "💰 金币: %d" % gold
 	lives_label.text = "❤️ 生命: %d" % lives
+	var level_data = LevelManager.get_level(current_level_index)
+	if level_data:
+		level_label.text = level_data["name"]
 
 func _setup_build_panel():
 	build_panel.add_tower_type("箭塔", 50, 150.0, preload("res://scenes/tower_arrow.tscn"))

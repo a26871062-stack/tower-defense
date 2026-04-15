@@ -23,7 +23,7 @@ script = ExtResource("4_path")
 [node name="TopBar" type="Panel" parent="UI"]
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 370.0
+offset_right = 200.0
 offset_bottom = 225.0
 
 [node name="GoldLabel" type="Label" parent="UI"]
@@ -85,46 +85,60 @@ theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
 theme_override_font_sizes/font_size = 16
 text = "进入第 2 关"
 
-[node name="SpeedDownButton" type="Button" parent="UI/TopBar"]
-offset_left = 140.0
-offset_top = 12.0
-offset_right = 172.0
-offset_bottom = 50.0
+[node name="TopBarRight" type="Panel" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 58.0
+grow_horizontal = 0
+
+[node name="SpeedDownButton" type="Button" parent="UI/TopBarRight"]
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 38.0
+offset_bottom = 43.0
 theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
 theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
 theme_override_font_sizes/font_size = 18
 text = "◀"
-[node name="SpeedLabel" type="Label" parent="UI/TopBar"]
-offset_left = 174.0
-offset_top = 12.0
-offset_right = 222.0
-offset_bottom = 50.0
+
+[node name="SpeedLabel" type="Label" parent="UI/TopBarRight"]
+offset_left = 40.0
+offset_top = 5.0
+offset_right = 88.0
+offset_bottom = 43.0
 theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_font_sizes/font_size = 18
 text = "1.0x"
 horizontal_alignment = 1
 vertical_alignment = 1
-[node name="SpeedUpButton" type="Button" parent="UI/TopBar"]
-offset_left = 224.0
-offset_top = 12.0
-offset_right = 256.0
-offset_bottom = 50.0
+
+[node name="SpeedUpButton" type="Button" parent="UI/TopBarRight"]
+offset_left = 90.0
+offset_top = 5.0
+offset_right = 122.0
+offset_bottom = 43.0
 theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
 theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
 theme_override_font_sizes/font_size = 18
 text = "▶"
-[node name="PauseButton" type="Button" parent="UI/TopBar"]
-offset_left = 260.0
-offset_top = 12.0
-offset_right = 330.0
-offset_bottom = 50.0
+
+[node name="PauseButton" type="Button" parent="UI/TopBarRight"]
+offset_left = 126.0
+offset_top = 5.0
+offset_right = 192.0
+offset_bottom = 43.0
 theme_override_colors/font_color = Color(0.96, 0.71, 0.17, 1)
 theme_override_colors/font_hover_color = Color(1, 0.88, 0.4, 1)
 theme_override_colors/font_pressed_color = Color(0.54, 0.42, 0.19, 1)
 theme_override_font_sizes/font_size = 16
 text = "⏸ 暂停"
+
 [node name="BuildPanel" parent="UI" instance=ExtResource("2_build")]
 
 [node name="TowerUpgradeUI" type="Control" parent="UI"]
